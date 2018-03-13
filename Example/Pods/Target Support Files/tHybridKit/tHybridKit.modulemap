@@ -1,0 +1,6 @@
+framework module tHybridKit {
+  umbrella header "tHybridKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

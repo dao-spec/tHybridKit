@@ -1,0 +1,14 @@
+platform :ios, '8.0'
+use_frameworks!
+
+target 'tHybridKit_Example' do
+  pod 'tHybridKit', :path => '../'
+
+  target 'tHybridKit_Tests' do
+    inherit! :search_paths
+    pod 'Specta'
+    pod 'Expecta'
+    pod 'FBSnapshotTestCase'
+    pod 'Expecta+Snapshots'
+  end
+end
