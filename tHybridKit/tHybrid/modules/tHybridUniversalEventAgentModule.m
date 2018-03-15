@@ -42,12 +42,11 @@ WX_EXPORT_METHOD(@selector(asynEvent:eventType:eventData:callback:));
     }
 
     //
-    tHybridUniversalEventModel *event = [tHybridUniversalEventModel eventWithName:eventName eventType:eventType data:eventData];
+    tHybridUniversalEventModel *event = [tHybridUniversalEventModel eventWithName:eventName eventType:eventType data:eventData callback:callback];
 
     id value = @"";
     if ([handler respondsToSelector:@selector(responsetHybridUniversalEventModel:)]) {
         value = [handler responsetHybridUniversalEventModel:event];
-        tHybridCallback(callback, value);
         return;
     }
 
