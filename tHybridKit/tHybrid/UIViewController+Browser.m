@@ -8,8 +8,7 @@
 #import "UIViewController+Browser.h"
 
 #import "NSURL+tHybrid.h"
-#import "tHybridEvent.h"
-#import "tHybridSpring.h"
+#import "tHybridUniversalEventModel.h"
 
 @implementation UIViewController (Browser)
 

@@ -13,9 +13,15 @@
 @required
 @property (nonatomic, strong) tHybridWebInstance *webInstance;
 
+@optional
+- (NSArray *)arrayForRequiredModels;
+
+
 @end
 
-@protocol tHybridMoudleProtocol <NSObject>
+
+
+@protocol tHybridWebModuleProtocol <NSObject>
 
 @property (nonatomic, weak) tHybridWebInstance *webInstance;
 

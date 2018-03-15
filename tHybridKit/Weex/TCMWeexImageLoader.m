@@ -3,7 +3,7 @@
 //  Weex
 //
 //  Created by Dao on 2017/12/29.
-//  Copyright © 2017年 淘菜猫. All rights reserved.
+//  Copyright © 2017年 Taocaimall. All rights reserved.
 //
 
 #import "TCMWeexImageLoader.h"

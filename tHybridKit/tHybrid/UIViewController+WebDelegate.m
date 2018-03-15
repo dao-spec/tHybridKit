@@ -9,8 +9,8 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <WebKit/WebKit.h>
+#import "tHybridModelsLoader.h"
 
-#import "tHybridSpring.h"
 #import <NSURL+tHybrid.h>
 
 @implementation UIViewController (WebDelegate)
@@ -45,13 +45,30 @@
     self.webInstance.webView = webView;
     self.webInstance.jsContext = context;
 
-    tHybridSpring *spring = [[tHybridSpring alloc] init];
-    spring.webInstance = self.webInstance;
+    context[@"console"][@"log"] = ^(JSValue * msg) {
+        NSLog(@"H5  log : %@", msg);
+    };
+    context[@"console"][@"warn"] = ^(JSValue * msg) {
+        NSLog(@"H5  warn : %@", msg);
+    };
+    context[@"console"][@"error"] = ^(JSValue * msg) {
+        NSLog(@"H5  error : %@", msg);
+    };
 
+    NSArray *requiredModels = [self arrayForRequiredModels];
 
-    context[@"event"] = spring;
+    for (NSString *modelName in requiredModels) {
+        if ([self.webInstance.modules valueForKey:modelName]) {
+            continue;
+        }
+        Class modelClass = [tHybridModelsLoader classWithModuleName:modelName];
+        NSObject<tHybridWebModuleProtocol,JSExport> *modelInstance = [[modelClass alloc] init];
+        modelInstance.webInstance = self.webInstance;
+        context[modelName] = modelInstance;
 
-    self.webInstance.module = spring;
+        [self.webInstance.modules setValue:modelInstance forKey:modelName];
+    }
+
 
 }
 
@@ -113,16 +130,8 @@
     return nil;
 }
 
-- (NSDictionary *)temp{
-    return nil;
-}
-
-- (NSString *)baseURL{
-    if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.Taocaimall.WeexDemo"]) {
-        return @"https://s3.cn-north-1.amazonaws.com.cn/h5.taocai.mobi/down/debug.IPA/dist/Weex";
-    } else {
-        return @"http://192.168.15.197:8081";
-    }
+- (NSArray *)arrayForRequiredModels{
+    return @[tHybridUniversalEventAgentModuleName];
 }
 
 @end

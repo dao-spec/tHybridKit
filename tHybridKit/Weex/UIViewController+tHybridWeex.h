@@ -3,13 +3,14 @@
 //  Weex
 //
 //  Created by Dao on 2018/1/18.
-//  Copyright © 2018年 淘菜猫. All rights reserved.
+//  Copyright © 2018年 Taocaimall. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 #import "tHybridSpringReceiveProtocol.h"
 #import "tHybridWeexProtocol.h"
+#import "NSObject+tHybridURL.h"
 
 
 
@@ -31,9 +32,4 @@
 
 - (void)rightBarButtonItem;
 
-- (NSString *)baseURL;
-
 @end
-
-
-

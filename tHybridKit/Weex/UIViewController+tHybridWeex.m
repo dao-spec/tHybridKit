@@ -3,12 +3,11 @@
 //  Weex
 //
 //  Created by Dao on 2018/1/18.
-//  Copyright © 2018年 淘菜猫. All rights reserved.
+//  Copyright © 2018年 Taocaimall. All rights reserved.
 //
 
 #import "UIViewController+tHybridWeex.h"
 
-#import "tHybridSpring.h"
 #import "NSURL+tHybrid.h"
 
 
@@ -61,12 +60,5 @@
 
 }
 
-- (NSString *)baseURL{
-    if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.Taocaimall.WeexDemo"]) {
-        return @"https://s3.cn-north-1.amazonaws.com.cn/h5.taocai.mobi/down/debug.IPA/dist/Weex";
-    } else {
-        return @"http://192.168.15.197:8081";
-    }
-}
 
 @end

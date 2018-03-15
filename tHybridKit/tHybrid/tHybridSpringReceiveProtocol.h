@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #import "WXModuleProtocol.h"
-#import "tHybridEvent.h"
+#import "tHybridUniversalEventModel.h"
 
 typedef NS_ENUM(NSUInteger, tHybridSpringEventSource) {
     tHybridSpringEventSourceNative,
@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, tHybridSpringEventSource) {
  *      ⚠️该线程不可直接执行UI相关的操作
  */
 @optional
-- (id)responseTHybridEvent:(tHybridEvent *)event;
+- (id)responsetHybridUniversalEventModel:(tHybridUniversalEventModel *)event;
 
 
 @end
