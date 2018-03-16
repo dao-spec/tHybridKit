@@ -12,27 +12,21 @@
 
 typedef UIViewController<tHybridSpringReceiveProtocol> tHybridReceiveHandler;
 
+
+
+
 @implementation tHybridUniversalEventAgentModule
 
 @synthesize webInstance;
 @synthesize weexInstance;
 
-#define tHybridCallback(callback,data)   \
-if (!callback) {    \
-    return; \
-}   \
-if ([ callback isKindOfClass:JSValue.class]) { \
-    [callback callWithArguments:data?@[data]:nil]; \
-} else { \
-    WXModuleCallback mcallback = (WXModuleCallback)callback;  \
-    mcallback(data);\
-} \
 
 /**
  *  Weex + H5
  */
 WX_EXPORT_METHOD(@selector(asynEvent:eventType:eventData:callback:));
-- (void)asynEvent:(NSString *)eventName eventType:(NSString *)eventType eventData:(id)eventData callback:(id)callback{
+THYBRID_EXPORT_METHOD(@selector(asynEvent:eventType:eventData:callback:));
+- (void)asynEvent:(NSString *)eventName eventType:(NSString *)eventType eventData:(id)eventData callback:(WXModuleCallback)callback{
     tHybridReceiveHandler *handler = nil;
 
     if (self.webInstance) {
@@ -40,18 +34,22 @@ WX_EXPORT_METHOD(@selector(asynEvent:eventType:eventData:callback:));
     } else if (self.weexInstance) {
         handler = (tHybridReceiveHandler *)self.weexInstance.viewController;
     }
+    id value = nil;
+    if ([callback isKindOfClass:JSValue.class]) {
+        value = [JSValue valueWithObject:callback inContext:self.webInstance.jsContext];
+    } else {
+        value = callback;
+    }
 
     //
-    tHybridUniversalEventModel *event = [tHybridUniversalEventModel eventWithName:eventName eventType:eventType data:eventData callback:callback];
+    tHybridUniversalEventModel *event = [tHybridUniversalEventModel eventWithName:eventName eventType:eventType data:eventData callback:value];
 
-    id value = @"";
     if ([handler respondsToSelector:@selector(responsetHybridUniversalEventModel:)]) {
-        value = [handler responsetHybridUniversalEventModel:event];
+        [handler responsetHybridUniversalEventModel:event];
         return;
     }
 
     NSLog(@"%@ cann't responds the event:%@", NSStringFromClass(handler.class), event);
-
 }
 
 /**

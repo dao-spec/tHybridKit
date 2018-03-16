@@ -35,10 +35,9 @@
 
         if (callback) {
             if ([callback isKindOfClass:JSValue.class]) {
-                self.jsValue = callback;
                 __block tHybridUniversalEventModel *blockSelf = self;
                 WXModuleCallback cbBlock = ^(id result){
-                    [blockSelf.jsValue callWithArguments:result];
+                    [blockSelf.jsValue callWithArguments:@[result]];
                 };
                 self.callbackBlock = cbBlock;
             } else {

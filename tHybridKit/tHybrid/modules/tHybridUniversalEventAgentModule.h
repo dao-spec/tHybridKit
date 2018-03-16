@@ -10,7 +10,6 @@
 #import <WXModuleProtocol.h>
 #import "tHybridWebProtocol.h"
 
-
 typedef JSValue* tHybridModuleCallback;
 
 #define THYBRID_MODULE_API(module)  module##Protocol
@@ -40,7 +39,7 @@ typedef JSValue* tHybridModuleCallback;
 
 @end
 
-@interface tHybridUniversalEventAgentModule : NSObject<WXModuleProtocol, THYBRID_MODULE_API(tHybridUniversalEventAgentModule)>
+@interface tHybridUniversalEventAgentModule : NSObject<WXModuleProtocol, tHybridWebModuleProtocol/*THYBRID_MODULE_API(tHybridUniversalEventAgentModule)*/>
 
 
 @end

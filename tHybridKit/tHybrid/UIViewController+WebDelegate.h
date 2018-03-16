@@ -13,7 +13,7 @@
 #import "NSObject+tHybridURL.h"
 #import "tHybridUniversalEventModel.h"
 
-@interface UIViewController (WebDelegate)<UIWebViewDelegate, tHybridWebProtocol>
+@interface UIViewController (WebDelegate)<UIWebViewDelegate, tHybridWebProtocol, tHybridSpringReceiveProtocol>
 
 
 /**

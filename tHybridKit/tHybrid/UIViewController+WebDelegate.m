@@ -32,7 +32,6 @@
 }
 
 
-
 /****************************************************************/
 /*                                                              */
 /*                      为window.top添加方法                      */
@@ -55,18 +54,21 @@
         NSLog(@"H5  error : %@", msg);
     };
 
+
     NSArray *requiredModels = [self arrayForRequiredModels];
 
-    for (NSString *modelName in requiredModels) {
-        if ([self.webInstance.modules valueForKey:modelName]) {
+    for (NSString *moduleName in requiredModels) {
+        if ([self.webInstance.modules valueForKey:moduleName]) {
             continue;
         }
-        Class modelClass = [tHybridModelsLoader classWithModuleName:modelName];
-        NSObject<tHybridWebModuleProtocol,JSExport> *modelInstance = [[modelClass alloc] init];
-        modelInstance.webInstance = self.webInstance;
-        context[modelName] = modelInstance;
+        Class moduleClass = [tHybridModelsLoader classWithModuleName:moduleName];
+        NSObject<tHybridWebModuleProtocol,JSExport> *moduleInstance = [[moduleClass alloc] init];
+        moduleInstance.webInstance = self.webInstance;
+//        context[modelName] = modelInstance;
 
-        [self.webInstance.modules setValue:modelInstance forKey:modelName];
+        context[moduleName] = [moduleClass webModuleFuctionMap];
+
+        [self.webInstance.modules setValue:moduleInstance forKey:moduleName];
     }
 
 

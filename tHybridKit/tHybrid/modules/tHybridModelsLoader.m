@@ -56,69 +56,34 @@ NSMutableDictionary *tHybridModelMap = nil;
     NSLog(@"\n\n\ntHybrid 完成Module注册\n---------------------------------");
 }
 
+/*
+ *
+ */
 + (void)loadConfiguration:(Class)theClass{
-
-    //theClass是否遵循JSExport协议
-    if (!class_conformsToProtocol(theClass, @protocol(JSExport))) {
-        return;
-    }
-
+    return;
     uint outCount;
-    Method *methodList = class_copyMethodList(theClass, &outCount);
-    NSMutableDictionary *methodMap = [NSMutableDictionary dictionary];
-    for (uint index=0; index< outCount; index++) {
+    Method *methodList = class_copyMethodList(object_getClass(theClass), &outCount);
 
+    for (uint index=0; index < outCount; index++) {
         Method method = methodList[index];
-        struct objc_method_description *methodDes = method_getDescription(method);
 
-        NSString *methodName = NSStringFromSelector(methodDes->name);
+        NSLog(@"%@", NSStringFromSelector(method_getName(method)));
 
-        [methodMap setValue:methodName forKey:[methodName componentsSeparatedByString:@":"].firstObject];
-
-    }
-
-    NSLog(@"methodMap:%@", methodMap);
-    NSLog(@"--------------------------------");
-    uint protoCount;
-    Protocol * __unsafe_unretained _Nonnull *protoList = class_copyProtocolList(theClass, &protoCount);
-
-    for (uint index=0; index < protoCount; index++) {
-        Protocol *proto = protoList[index];
-
-        if (!protocol_conformsToProtocol(proto, @protocol(JSExport))) {
+        NSString *methodName = NSStringFromSelector(method_getName(method));
+        if (![methodName hasPrefix:@"thybrid_export_method_sync"]) {
             continue;
         }
 
-        NSArray *array = @[@(YES), @(NO)];
+        SEL selector = method_getName(method);
 
-        NSLog(@"以下协议中部分方法未实现");
-        for (NSObject *obj in array) {
-            uint pmethodCount;
-            struct objc_method_description * pmethodList = protocol_copyMethodDescriptionList(proto, [(NSNumber *)obj boolValue], YES, &pmethodCount);
+        NSString *IMP_name = [theClass performSelector:selector withObject:nil];
 
 
-            for (uint pindex=0; pindex<pmethodCount; pindex++) {
-                struct objc_method_description methodDes = pmethodList[pindex];
-                if (class_respondsToSelector(theClass, methodDes.name)) {
-                    continue;
-                }
 
-                NSString *methodName = [NSStringFromSelector(methodDes.name) componentsSeparatedByString:@":"].firstObject;
-
-                Method classMethod = class_getInstanceMethod(theClass, NSSelectorFromString([methodMap valueForKey:methodName]));
-                struct objc_method_description *classMethodDes = method_getDescription(classMethod);
-
-                if ((strcmp(classMethodDes->types, methodDes.types) == 0)) {
-                    NSLog(@"Protocol:%@ Name:%@ Types:%s", NSStringFromProtocol(proto), NSStringFromSelector(methodDes.name), methodDes.types);
-                    if (class_addMethod(theClass, methodDes.name, class_getMethodImplementation(theClass, classMethodDes->name), methodDes.types)) {
-                        NSLog(@"Add Method For Name:%@ Types:%s Success", NSStringFromSelector(methodDes.name), methodDes.types);
-                    }
-                }
-            }
-        }
     }
 
-    NSLog(@"--------------------------------");
+
+    return;
 
 }
 
