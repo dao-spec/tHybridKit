@@ -19,7 +19,7 @@
 #import "WXSDKManager.h"
 #import <objc/runtime.h>
 #import "WXConvert.h"
-
+#import "JSValue+Weex.h"
 
 @implementation NSObject (ModuleMap)
 
@@ -29,45 +29,48 @@
 
 
     uint outCount;
-    Method *methodList = class_copyMethodList(object_getClass(self.class), &outCount);
+    Method *claMethodList = class_copyMethodList(object_getClass(self.class), &outCount);
 
 
     for (int index=0; index < outCount; index++) {
-        Method method = methodList[index];
+        Method claMethod = claMethodList[index];
 
-        NSString *methodName = NSStringFromSelector(method_getName(method));
-        if ([methodName hasPrefix:@"thybrid_export_method_"] || [methodName hasPrefix:@"thybrid_export_method_sync"]) {
-            SEL selector = method_getName(method);
+        NSString *claMethodName = NSStringFromSelector(method_getName(claMethod));
+        if ([claMethodName hasPrefix:@"thybrid_export_method_"] || [claMethodName hasPrefix:@"thybrid_export_method_sync"]) {
+            SEL claSelector = method_getName(claMethod);
 
-            NSString *methodName = (NSString *)[self.class performSelector:selector withObject:nil];
-            map[[methodName componentsSeparatedByString:@":"].firstObject] = ^(){
+            NSInvocation *claInvocation = [NSObject invocationWithTarget:self.class selector:claSelector arguments:nil methodName:claMethodName callback:nil];
+            [claInvocation invoke];
+            void *retrunValue;
+            [claInvocation getReturnValue:&retrunValue];
+            NSString *methodName = [(__bridge id)retrunValue copy];
+            map[[methodName componentsSeparatedByString:@":"].firstObject] = [^(){
+
                 NSArray *array = [JSContext currentArguments];
-
-                NSMutableArray *args = [NSMutableArray array];
-
-                for (uint index=0; index < array.count; index++) {
-                    id obj = [array[index] toObject];
-                    [args addObject:obj];
-                }
-
                 SEL IMP_selector = NSSelectorFromString(methodName);
 
-                NSInvocation *invocation = [self invocationWithTarget:self selector:IMP_selector arguments:args methodName:methodName callback:array.lastObject];
+                NSInvocation *invocation = [NSObject invocationWithTarget:self selector:IMP_selector arguments:array methodName:methodName callback:array.lastObject];
+                JSValue *returnValue = nil;
+                //同步
                 if (invocation) {
                     [invocation invoke];
+                    if ([claMethodName hasPrefix:@"thybrid_export_method_sync"]) {
+                        returnValue = [JSValue wx_valueWithReturnValueFromInvocation:invocation inContext:[JSContext currentContext]];
+                    }
                 }
-            };
+                return returnValue;
+            } copy];
         }
     }
 
-    free(methodList);
+    free(claMethodList);
 
     //方法扫描，确认H5方法
 
     return map;
 }
 
-- (NSInvocation *)invocationWithTarget:(id)target selector:(SEL)selector arguments:(NSArray *)arguments methodName:(NSString *)methodName callback:(JSValue *)callback{
++ (NSInvocation *)invocationWithTarget:(id)target selector:(SEL)selector arguments:(NSArray *)arguments methodName:(NSString *)methodName callback:(JSValue *)callback{
     WXAssert(target, @"No target for method:%@", self);
     WXAssert(selector, @"No selector for method:%@", self);
 
@@ -94,7 +97,7 @@
     for (int i = 0; i < arguments.count; i ++ ) {
         id obj = arguments[i];
         const char *parameterType = [signature getArgumentTypeAtIndex:i + 2];
-        obj = [self parseArgument:obj parameterType:parameterType order:i];
+        obj = [self parseArgument:[obj toObject] parameterType:parameterType order:i];
         static const char *blockType = @encode(typeof(^{}));
         id argument;
         if (!strcmp(parameterType, blockType)) {
@@ -117,7 +120,7 @@
     return invocation;
 }
 
--(id)parseArgument:(id)obj parameterType:(const char *)parameterType order:(int)order{
++ (id)parseArgument:(id)obj parameterType:(const char *)parameterType order:(int)order{
 #ifdef DEBUG
     BOOL check = YES;
 #endif
