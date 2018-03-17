@@ -62,12 +62,11 @@
             continue;
         }
         Class moduleClass = [tHybridModelsLoader classWithModuleName:moduleName];
+
         NSObject<tHybridWebModuleProtocol,JSExport> *moduleInstance = [[moduleClass alloc] init];
         moduleInstance.webInstance = self.webInstance;
-//        context[modelName] = modelInstance;
 
-        context[moduleName] = [moduleClass webModuleFuctionMap];
-
+        context[moduleName] = [moduleInstance webModuleFuctionMap];
         [self.webInstance.modules setValue:moduleInstance forKey:moduleName];
     }
 

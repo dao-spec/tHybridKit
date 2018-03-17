@@ -9,6 +9,6 @@
 
 @interface NSObject (ModuleMap)
 
-+ (NSMutableDictionary *)webModuleFuctionMap;
+- (NSMutableDictionary *)webModuleFuctionMap;
 
 @end
