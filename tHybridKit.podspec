@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'tHybridKit'
-  s.version          = '0.2.2'
+  s.version          = '0.2.2.1'
   s.summary          = 'Native + Weex + H5'
 
 # This description is used to generate tags and improve search results.
@@ -28,17 +28,21 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/T0421/tHybrid.git', :tag => "v#{s.version.to_s}" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
+  s.platform     = :ios
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'tHybridKit/**/*'
-  
+  s.source_files = 'tHybridKit/**/**/*'
+
+  s.user_target_xcconfig = { 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES' }
+
   # s.resource_bundles = {
   #   'tHybridKit' => ['tHybridKit/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+  s.requires_arc = true
+
+  s.public_header_files = 'tHybridKit/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'WeexSDK', '~> 0.16.2'
   s.dependency 'SDWebImage', '~> 4.2.2'
-
 end
