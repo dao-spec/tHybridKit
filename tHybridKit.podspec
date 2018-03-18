@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'tHybridKit'
-  s.version          = '0.2.2.1'
+  s.version          = '0.2.4'
   s.summary          = 'Native + Weex + H5'
 
 # This description is used to generate tags and improve search results.
