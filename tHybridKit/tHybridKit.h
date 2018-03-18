@@ -10,13 +10,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Weex/TCMWeex.h"
-#import "Weex/UIViewController+tHybridWeex.h"
+#import "TCMWeex.h"
+#import "UIViewController+tHybridWeex.h"
 
-#import "tHybrid/NSURL+tHybrid.h"
+#import "NSURL+tHybrid.h"
 
-#import "tHybrid/UIViewController+Browser.h"
+#import "UIViewController+Browser.h"
 
-#import "tHybrid//UIViewController+WebDelegate.h"
+#import "UIViewController+WebDelegate.h"
 
 #endif /* tHybridKit_h */
