@@ -24,6 +24,4 @@
 
 @property (nonatomic, strong) NSMutableDictionary<NSString *,NSObject<JSExport> *> *modules;
 
-@property (nonatomic, strong) NSObject<JSExport> *module;
-
 @end

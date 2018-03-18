@@ -24,7 +24,6 @@ NSMutableDictionary *tHybridModelMap = nil;
      *  加载默认事件module
      */
     registerBlock(tHybridUniversalEventAgentModule.class, tHybridUniversalEventAgentModuleName);
-    [self loadConfiguration:tHybridUniversalEventAgentModule.class];
     [tHybridModelMap setValue:tHybridUniversalEventAgentModule.class forKey:tHybridUniversalEventAgentModuleName];
 
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"weexConfiguration" ofType:@"plist"];
@@ -43,7 +42,6 @@ NSMutableDictionary *tHybridModelMap = nil;
         if (class) {
             registerBlock(class, key);
             NSLog(@"Module %@ 注册成功", key);
-            [self loadConfiguration:class];
             [tHybridModelMap setValue:class forKey:key];
         }
 #ifdef DEBUG
@@ -54,37 +52,6 @@ NSMutableDictionary *tHybridModelMap = nil;
     }
 
     NSLog(@"\n\n\ntHybrid 完成Module注册\n---------------------------------");
-}
-
-/*
- *
- */
-+ (void)loadConfiguration:(Class)theClass{
-    return;
-    uint outCount;
-    Method *methodList = class_copyMethodList(object_getClass(theClass), &outCount);
-
-    for (uint index=0; index < outCount; index++) {
-        Method method = methodList[index];
-
-        NSLog(@"%@", NSStringFromSelector(method_getName(method)));
-
-        NSString *methodName = NSStringFromSelector(method_getName(method));
-        if (![methodName hasPrefix:@"thybrid_export_method_sync"]) {
-            continue;
-        }
-
-        SEL selector = method_getName(method);
-
-        NSString *IMP_name = [theClass performSelector:selector withObject:nil];
-
-
-
-    }
-
-
-    return;
-
 }
 
 + (Class)classWithModuleName:(NSString *)moduleName{
