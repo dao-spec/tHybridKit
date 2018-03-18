@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <WeexSDK/WeexSDK.h>
+#import "WeexSDK/WeexSDK.h"
 
 /**
  功能描述:
