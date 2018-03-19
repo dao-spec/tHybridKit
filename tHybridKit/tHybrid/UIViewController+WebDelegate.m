@@ -9,7 +9,7 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <WebKit/WebKit.h>
-#import "tHybridModelsLoader.h"
+#import "tHybridModulesLoader.h"
 
 #import "NSURL+tHybrid.h"
 
@@ -58,7 +58,7 @@
         if ([self.webInstance.modules valueForKey:moduleName]) {
             continue;
         }
-        Class moduleClass = [tHybridModelsLoader classWithModuleName:moduleName];
+        Class moduleClass = [tHybridModulesLoader classWithModuleName:moduleName];
 
         NSObject<tHybridWebModuleProtocol,JSExport> *moduleInstance = [[moduleClass alloc] init];
         moduleInstance.webInstance = self.webInstance;

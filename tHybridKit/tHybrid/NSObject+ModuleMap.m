@@ -7,7 +7,6 @@
 
 #import "NSObject+ModuleMap.h"
 
-#import <JavaScriptCore/JavaScriptCore.h>
 #import <objc/runtime.h>
 #import <objc/message.h>
 
@@ -22,6 +21,11 @@
 
 @interface NSObject ()
 
+
+/**
+ *  <MethodShortName,MethodName>
+ *    eg.<setMethodShortName,setMethodShortName:>
+ */
 @property (nonatomic, copy) NSMutableDictionary *methodMap;
 
 @end
@@ -96,12 +100,11 @@
  *  返回一个NSInvocation类型的Instance.
  *  参数arguments是一个NSArray<JSValue *>类型的数组;
  *  JSValue类型的Instance无法直接转换为NSBlock类型;
-
- @param target Target Object
- @param selector selector
- @param arguments arguments
- @param methodName methodName
- @return NSInvication instance
+ *
+ *  @param target Target Object
+ *  @param selector selector
+ *  @param arguments arguments
+ *  @return NSInvication instance
  */
 + (NSInvocation *)invocationWithTarget:(id)target selector:(SEL)selector arguments:(NSArray *)arguments{
     WXAssert(target, @"No target for method:%@", self);
@@ -153,6 +156,15 @@
     return invocation;
 }
 
+
+/**
+ *  JavaScript调用Native的参数解析
+ *
+ *  @param obj Obejctive-C Instance
+ *  @param parameterType Native中定义的参数类型
+ *  @param order 方法中参数Index
+ *  @return Native中方法所定义的参数类型的数据
+ */
 + (id)parseArgument:(id)obj parameterType:(const char *)parameterType order:(int)order{
 #ifdef DEBUG
     BOOL check = YES;
@@ -206,6 +218,13 @@ static void* kMethodMap = &kMethodMap;
     return map;
 }
 
+
+/**
+ * 按照MethodShortName返回对应的SEL类型的数据
+ *
+ * @param shortKey MethodShortName
+ * @return MethodName对应的SEL数据
+ */
 - (SEL)selectorWithMethodShortKey:(NSString *)shortKey{
 
     NSString *methodName = [self.methodMap valueForKey:shortKey];

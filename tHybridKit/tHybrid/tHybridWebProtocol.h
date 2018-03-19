@@ -14,8 +14,11 @@
 return NSStringFromSelector(method); \
 }
 
+
+/**tHybrid Web异步方法*/
 #define THYBRID_EXPORT_METHOD(method)  THYBRID_EXPORT_METHOD_INTERNAL(method, thybrid_export_method_)
 
+/**tHybrid Web同步方法*/
 #define THYBRID_EXPORT_METHOD_SYNC(method) THYBRID_EXPORT_METHOD_INTERNAL(method, thybrid_export_method_sync_)
 
 

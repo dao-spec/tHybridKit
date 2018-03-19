@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/T0421/tHybrid.git', :tag => "v#{s.version.to_s}" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.platform     = :ios
+  s.platform = :ios
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'tHybridKit/**/**/*'
@@ -41,7 +41,7 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
-  s.public_header_files = 'tHybridKit/**/*.h'
+  s.public_header_files = 'tHybridKit/**/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'WeexSDK', '~> 0.16.2'
   s.dependency 'SDWebImage', '~> 4.2.2'

@@ -10,15 +10,10 @@
 #import "WXModuleProtocol.h"
 #import "tHybridUniversalEventModel.h"
 
-typedef NS_ENUM(NSUInteger, tHybridSpringEventSource) {
-    tHybridSpringEventSourceNative,
-    tHybridSpringEventSourceWeex,
-    tHybridSpringEventSourceWeb,
-    tHybridSpringEventSourceBrowser,
-};
 
-
-
+/**
+ * 接收Module事件转发的Protocol
+ */
 @protocol tHybridSpringReceiveProtocol <NSObject>
 
 /**

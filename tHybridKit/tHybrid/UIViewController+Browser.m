@@ -20,8 +20,6 @@
     NSLog(@"%@", request);
     NSLog(@"%@", requestData);
 
-//    tHybridSpringRoute *spring = [[tHybridSpringRoute alloc] init];
-//    [spring tHybirdInvokeEvent:request eventName:request eventSource:(tHybridSpringEventSourceBrowser) data:requestData callback:nil];
 
     return YES;
 }

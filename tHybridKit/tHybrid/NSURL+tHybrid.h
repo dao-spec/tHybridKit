@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 /**
  *  用于拦截由Web发出的请求，分割为请求API(tcmRequest)和请求数据(tcmRequest)
  *      tcmRequest 为预定的业务标识

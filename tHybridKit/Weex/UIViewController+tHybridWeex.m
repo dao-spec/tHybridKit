@@ -13,6 +13,12 @@
 
 @implementation UIViewController (tHybridWeex)
 
+//@dynamic weexInstance;
+//@dynamic weexView;
+//@dynamic weexUrl;
+//@dynamic options;
+//@dynamic renderFailed;
+
 - (void)renderWeex{
     [self renderWeexWithOptions:nil];
 }
@@ -24,7 +30,6 @@
         weakSelf.renderFailed = NO;
         //进行安全校验，避免出现运行时Crash现象
         [weakSelf onCreate:view];
-
 
     };
     self.weexInstance.onFailed = ^(NSError *error) {

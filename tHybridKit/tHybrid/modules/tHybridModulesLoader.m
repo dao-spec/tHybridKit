@@ -1,11 +1,11 @@
 //
-//  tHybridModelsLoader.m
+//  tHybridModulesLoader.m
 //  tHybridKit
 //
 //  Created by Dao on 2018/3/14.
 //
 
-#import "tHybridModelsLoader.h"
+#import "tHybridModulesLoader.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import <objc/runtime.h>
 
@@ -16,7 +16,7 @@ NSString *const tHybridUniversalEventAgentModuleName = @"EventAgent";
 
 NSMutableDictionary *tHybridModelMap = nil;
 
-@implementation tHybridModelsLoader
+@implementation tHybridModulesLoader
 
 + (void)loadModels:(void(^)(Class modelClass, NSString *modelName))registerBlock{
     tHybridModelMap = [NSMutableDictionary dictionary];

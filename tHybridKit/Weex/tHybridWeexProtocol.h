@@ -14,6 +14,7 @@
  */
 @protocol tHybridWeexProtocol <NSObject>
 
+@required
 @property (nonatomic, strong) WXSDKInstance *weexInstance;
 @property (nonatomic, strong) UIView *weexView;
 @property (nonatomic, strong) NSURL *weexUrl;

@@ -10,7 +10,7 @@
 
 #import "WeexSDK.h"
 #import "TCMWeexImageLoader.h"
-#import "tHybridModelsLoader.h"
+#import "tHybridModulesLoader.h"
 
 @implementation tHybridKit
 
@@ -29,7 +29,7 @@
     [WXSDKEngine registerHandler:[TCMWeexImageLoader new] withProtocol:@protocol(WXImgLoaderProtocol)];
 
     //注册Model
-    [tHybridModelsLoader loadModels:^(__unsafe_unretained Class modelClass, NSString *modelName) {
+    [tHybridModulesLoader loadModels:^(__unsafe_unretained Class modelClass, NSString *modelName) {
         [WXSDKEngine registerModule:modelName withClass:modelClass];
     }];
 }
