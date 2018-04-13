@@ -13,7 +13,7 @@ PODS:
     - SDWebImage/Core (= 4.2.3)
   - SDWebImage/Core (4.2.3)
   - Specta (1.0.7)
-  - tHybridKit (0.1.0):
+  - tHybridKit (0.2.5):
     - SDWebImage (~> 4.2.2)
     - WeexSDK (~> 0.16.2)
   - WeexSDK (0.16.2)
@@ -35,9 +35,9 @@ SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   SDWebImage: 791bb72962b3492327ddcac4b1880bd1b5458431
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
-  tHybridKit: 430e0a7285493ad36d1aaca15842c9a6499301f5
+  tHybridKit: ecec69878d1610178bb9cf1a14566b3c3a62d996
   WeexSDK: 854ef66c9a90d609ad60e87c8b76affe2b772224
 
 PODFILE CHECKSUM: cccd007181646cde748cfb92d0ea7fad5dc74cb8
 
-COCOAPODS: 1.4.0.rc.1
+COCOAPODS: 1.4.0

@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "tHybridWebProtocol.h"
 
 /*
  *  对外暴露的通用事件：EventAgent
@@ -35,5 +36,10 @@ FOUNDATION_EXTERN NSString *const tHybridUniversalEventAgentModuleName;
  * @return Class对象
  */
 + (Class)classWithModuleName:(NSString *)moduleName;
+
+@end
+
+
+@interface tHybridModulesLoaderHelper : NSObject<tHybridWebModuleProtocol>
 
 @end

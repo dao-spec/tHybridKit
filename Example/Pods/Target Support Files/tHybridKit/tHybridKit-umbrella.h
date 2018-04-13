@@ -10,9 +10,17 @@
 #endif
 #endif
 
+#import "tHybridModulesLoader.h"
+#import "tHybridUniversalEventAgentModule.h"
+#import "tHybridUniversalEventModel.h"
+#import "NSObject+ModuleMap.h"
+#import "NSObject+tHybridURL.h"
 #import "NSURL+tHybrid.h"
-#import "tHybridSpring.h"
-#import "tHybridSpringProtocol.h"
+#import "tHybridSpringReceiveProtocol.h"
+#import "tHybridWebInstance.h"
+#import "tHybridWebProtocol.h"
+#import "UIViewController+Browser.h"
+#import "UIViewController+WebDelegate.h"
 #import "tHybridKit.h"
 #import "TCMWeex.h"
 #import "TCMWeexImageLoader.h"

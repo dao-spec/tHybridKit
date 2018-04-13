@@ -60,3 +60,23 @@ NSMutableDictionary *tHybridModelMap = nil;
 }
 
 @end
+
+@implementation tHybridModulesLoaderHelper
+@synthesize webInstance;
+
+THYBRID_EXPORT_METHOD_SYNC(@selector(requireModule:))
+- (void)requireModule:(NSString *)module{
+    if ([self.webInstance.modules valueForKey:module]) {
+        return;
+    }
+    Class moduleClass = [tHybridModulesLoader classWithModuleName:module];
+    
+    NSObject<tHybridWebModuleProtocol,JSExport> *moduleInstance = [[moduleClass alloc] init];
+    moduleInstance.webInstance = self.webInstance;
+    
+    self.webInstance.jsContext[module] = [moduleInstance webModuleFuctionMap];
+    [self.webInstance.modules setValue:moduleInstance forKey:module];
+}
+
+
+@end

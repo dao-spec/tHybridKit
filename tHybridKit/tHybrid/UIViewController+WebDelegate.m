@@ -35,9 +35,7 @@
 /*                      为window.top添加方法                      */
 /*                                                              */
 /****************************************************************/
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView{
-
+- (void)webViewDidStartLoad:(UIWebView *)webView{
     JSContext *context  =[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
     self.webInstance.webView = webView;
     self.webInstance.jsContext = context;
@@ -52,20 +50,19 @@
         NSLog(@"H5  error : %@", msg);
     };
 
-    NSArray *requiredModels = [self arrayForRequiredModules];
 
-    for (NSString *moduleName in requiredModels) {
-        if ([self.webInstance.modules valueForKey:moduleName]) {
-            continue;
-        }
-        Class moduleClass = [tHybridModulesLoader classWithModuleName:moduleName];
+    NSObject<tHybridWebModuleProtocol> *moduleInstance = [[tHybridModulesLoaderHelper alloc] init];
+    moduleInstance.webInstance = self.webInstance;
 
-        NSObject<tHybridWebModuleProtocol,JSExport> *moduleInstance = [[moduleClass alloc] init];
-        moduleInstance.webInstance = self.webInstance;
+    context[@"weex"] = [moduleInstance webModuleFuctionMap];
+    [self.webInstance.modules setValue:moduleInstance forKey:@"tHybridModulesLoaderHelper"];
 
-        context[moduleName] = [moduleInstance webModuleFuctionMap];
-        [self.webInstance.modules setValue:moduleInstance forKey:moduleName];
-    }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+
+
+
 }
 
 - (NSArray *)arrayForRequiredModules{
