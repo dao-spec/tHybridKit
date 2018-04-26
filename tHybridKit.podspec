@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'tHybridKit'
-  s.version          = '0.2.5'
+  s.version          = '0.3.0'
   s.summary          = 'Native + Weex + H5'
 
 # This description is used to generate tags and improve search results.
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
                       Encapsulation For Native + Weex + H5
                        DESC
 
-  s.homepage         = 'https://github.com/T0421/tHybrid.git'
+  s.homepage         = 'https://github.com/T0421/tHybridKit.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Dao' => 'cilike@sina.cn' }
-  s.source           = { :git => 'https://github.com/T0421/tHybrid.git', :tag => "v#{s.version.to_s}" }
+  s.source           = { :git => 'https://github.com/T0421/tHybridKit.git', :tag => "v#{s.version.to_s}" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform = :ios
