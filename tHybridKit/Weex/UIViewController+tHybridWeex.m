@@ -9,6 +9,7 @@
 #import "UIViewController+tHybridWeex.h"
 
 #import "NSURL+tHybrid.h"
+#import <objc/runtime.h>
 
 
 @implementation UIViewController (tHybridWeex)
@@ -63,6 +64,35 @@
 }
 - (void)springToBasket{
 
+}
+#define THYBRID_ADD_PROPERTY(Property,property,TYPE,ASSOCIATION_RETAIN)    \
+static void *k##property = &k##property;    \
+- (TYPE *)property{ \
+TYPE *obj = objc_getAssociatedObject(self, &k##property);   \
+return obj; \
+} \
+- (void)set##Property:(TYPE *)Property{ \
+objc_setAssociatedObject(self, &k##property, Property, ASSOCIATION_RETAIN);    \
+}
+
+//@synthesize weexInstance;
+THYBRID_ADD_PROPERTY(WeexInstance, weexInstance, WXSDKInstance, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//@synthesize weexView;
+THYBRID_ADD_PROPERTY(WeexView, weexView, UIView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//@synthesize weexUrl;
+THYBRID_ADD_PROPERTY(WeexUrl, weexUrl, NSURL, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//@synthesize options;
+THYBRID_ADD_PROPERTY(Options, options, NSObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//@synthesize contentView;
+THYBRID_ADD_PROPERTY(ContentView, contentView, UIView, OBJC_ASSOCIATION_ASSIGN);
+//@synthesize renderFailed;
+static void *krenderFailed = &krenderFailed;
+- (BOOL)renderFailed{
+    NSNumber *obj = objc_getAssociatedObject(self, &krenderFailed);
+    return [obj boolValue];
+}
+- (void)setRenderFailed:(BOOL)Property{
+    objc_setAssociatedObject(self, &krenderFailed, @(Property), OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 
