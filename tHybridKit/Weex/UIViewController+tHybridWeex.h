@@ -28,7 +28,7 @@
  *
  * @param options 渲染所需参数
  */
-- (void)renderWeexWithOptions:(NSDictionary *)options;
+- (void)renderWeexWithOptions:(NSObject *)options;
 
 - (void)rightBarButtonItem;
 

@@ -7,6 +7,7 @@
 //
 
 #import "NSURL+tHybrid.h"
+#import "NSObject+tHybridURL.h"
 #import <objc/runtime.h>
 
 static NSString* kRequest = @"tcmRequest";
@@ -62,6 +63,13 @@ NSString  *host = @"www.taocaimall.weex-demo-enterprise://";
     }
     return NO;
 }
+
++ (NSURL *)weexUrlWithFilePath:(NSString *)filePath{
+    NSString *fullpath = [NSString stringWithFormat:@"%@/%@", [filePath tHybridRemoteBaseURL], filePath];
+    fullpath = [fullpath stringByReplacingOccurrencesOfString:@"//" withString:@"/"];
+    return [NSURL URLWithString:fullpath];
+}
+
 @end
 
 

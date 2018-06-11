@@ -31,4 +31,6 @@
  */
 @property (nonatomic, assign, readonly) BOOL tcmAPP;
 
++ (NSURL *)weexUrlWithFilePath:(NSString *)filePath;
+
 @end

@@ -14,22 +14,28 @@
 
 @implementation UIViewController (tHybridWeex)
 
-//@dynamic weexInstance;
-//@dynamic weexView;
-//@dynamic weexUrl;
-//@dynamic options;
-//@dynamic renderFailed;
-
 - (void)renderWeex{
-    [self renderWeexWithOptions:nil];
+    [self renderWeexWithOptions:self.options];
 }
 
-- (void)renderWeexWithOptions:(NSDictionary *)options{
+- (void)renderWeexWithOptions:(NSObject *)options{
+    [self.weexInstance destroyInstance];
+    self.weexInstance = [[WXSDKInstance alloc] init];
+    self.weexInstance.viewController = self;
+    if (self.contentView) {
+        CGRect frame = self.contentView.frame;
+        frame.origin = CGPointZero;
+        self.weexInstance.frame = frame;
+    } else {
+        self.weexInstance.frame = self.view.frame;
+    }
 
     __weak typeof(self) weakSelf = self;
     self.weexInstance.onCreate = ^(UIView *view) {
         weakSelf.renderFailed = NO;
         //进行安全校验，避免出现运行时Crash现象
+        [weakSelf.weexView removeFromSuperview];
+        weakSelf.weexView = view;
         [weakSelf onCreate:view];
 
     };
@@ -43,7 +49,7 @@
         //process renderFinish
         [weakSelf renderFinish:view];
     };
-    [self.weexInstance renderWithURL:self.weexUrl options:options data:nil];
+    [self.weexInstance renderWithURL:self.weexUrl options:options?@{@"requestData":options}:nil data:nil];
 }
 
 - (void)renderFinish:(UIView *)view{
@@ -57,6 +63,7 @@
 - (void)onCreate:(UIView *)view{
  
 }
+
 
 - (void)rightBarButtonItem{
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_basket"] style:(UIBarButtonItemStylePlain) target:self action:@selector(springToBasket)];

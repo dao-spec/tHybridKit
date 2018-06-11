@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSURL *weexUrl;
 @property (nonatomic, strong) NSObject *options;
 @property (nonatomic, assign) BOOL renderFailed;
+@property (nonatomic, weak) UIView *contentView;
 
 @required
 - (void)onCreate:(UIView *)view;

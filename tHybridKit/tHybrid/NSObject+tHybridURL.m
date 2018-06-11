@@ -18,7 +18,7 @@
     if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.Taocaimall.WeexDemo"]) {
         return @"https://s3.cn-north-1.amazonaws.com.cn/h5.taocai.mobi/down/debug.IPA/dist/Weex";
     } else {
-        return @"http://192.168.15.197:8081";
+        return @"http://192.168.15.238:8081";
     }
 }
 
