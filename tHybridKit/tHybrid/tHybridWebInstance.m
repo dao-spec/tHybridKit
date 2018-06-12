@@ -10,12 +10,10 @@
 @implementation tHybridWebInstance
 
 
-- (NSMutableDictionary<NSString *,NSObject<JSExport> *> *)modules{
-
+- (NSMutableDictionary<NSString *,NSObject *> *)modules{
     if (!_modules) {
         _modules = [NSMutableDictionary dictionary];
     }
-
     return _modules;
 }
 
