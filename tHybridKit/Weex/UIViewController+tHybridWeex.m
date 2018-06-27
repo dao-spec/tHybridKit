@@ -93,13 +93,13 @@ THYBRID_ADD_PROPERTY(Options, options, NSObject, OBJC_ASSOCIATION_RETAIN_NONATOM
 //@synthesize contentView;
 THYBRID_ADD_PROPERTY(ContentView, contentView, UIView, OBJC_ASSOCIATION_ASSIGN);
 //@synthesize renderFailed;
-static void *krenderFailed = &krenderFailed;
-- (BOOL)renderFailed{
-    NSNumber *obj = objc_getAssociatedObject(self, &krenderFailed);
-    return [obj boolValue];
+static void *renderOption = &renderOption;
+- (thybridRenderOption)renderOption{
+    NSNumber *obj = objc_getAssociatedObject(self, &renderOption);
+    return (thybridRenderOption)[obj integerValue];
 }
-- (void)setRenderFailed:(BOOL)Property{
-    objc_setAssociatedObject(self, &krenderFailed, @(Property), OBJC_ASSOCIATION_COPY_NONATOMIC);
+- (void)setRenderOption:(thybridRenderOption)Property{
+    objc_setAssociatedObject(self, &renderOption, @(Property), OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 

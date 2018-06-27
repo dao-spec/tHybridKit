@@ -7,6 +7,12 @@
 
 #import "WXSDKInstance.h"
 
+typedef NS_OPTIONS(NSUInteger, thybridRenderOption) {
+    thybridRenderOptionUnknown = 1 << 0,
+    thybridRenderOptionRendering = 1 << 1,
+    thybridRenderOptionFail = 1 << 2,
+    thybridRenderOptionFinish = 1 << 3,
+};
 
 /**
  * Weex使用规范
@@ -18,8 +24,8 @@
 @property (nonatomic, strong) WXSDKInstance *weexInstance;
 @property (nonatomic, strong) UIView *weexView;
 @property (nonatomic, strong) NSURL *weexUrl;
-@property (nonatomic, strong) NSObject *options;
-@property (nonatomic, assign) BOOL renderFailed;
+@property (nonatomic, strong) __kindof NSObject *options;
+@property (nonatomic, assign) thybridRenderOption renderOption;
 @property (nonatomic, weak) UIView *contentView;
 
 @required
