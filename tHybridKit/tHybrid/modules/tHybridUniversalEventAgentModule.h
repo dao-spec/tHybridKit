@@ -9,8 +9,11 @@
 
 #import "WXModuleProtocol.h"
 #import "tHybridWebProtocol.h"
+#import "NSObject+EventMap.h"
+
 
 @interface tHybridUniversalEventAgentModule : NSObject<WXModuleProtocol, tHybridWebModuleProtocol>
 
+@property (class, nonatomic, copy, readonly) NSString *GlobalEventRefreshInstance;
 
 @end

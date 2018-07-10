@@ -10,6 +10,7 @@
 
 #import "NSURL+tHybrid.h"
 #import <objc/runtime.h>
+#import "tHybridUniversalEventAgentModule.h"
 
 
 @implementation UIViewController (tHybridWeex)
@@ -30,9 +31,11 @@
         self.weexInstance.frame = self.view.frame;
     }
 
+    self.renderOption = thybridRenderOptionOnRendering;
     __weak typeof(self) weakSelf = self;
     self.weexInstance.onCreate = ^(UIView *view) {
-        weakSelf.renderFailed = NO;
+        weakSelf.renderOption |= thybridRenderOptionOnCreate;
+
         //进行安全校验，避免出现运行时Crash现象
         [weakSelf.weexView removeFromSuperview];
         weakSelf.weexView = view;
@@ -41,19 +44,28 @@
     };
     self.weexInstance.onFailed = ^(NSError *error) {
         //process failure
-        weakSelf.renderFailed = YES;
+        weakSelf.renderOption |= thybridRenderOptionOnFail;
         [weakSelf onFailed:error];
     };
 
     self.weexInstance.renderFinish = ^ (UIView *view) {
         //process renderFinish
+        weakSelf.renderOption |= thybridRenderOptionOnFinish;
         [weakSelf renderFinish:view];
     };
-    [self.weexInstance renderWithURL:self.weexUrl options:options?@{@"requestData":options}:nil data:nil];
+    NSMutableDictionary *GlobalEvent = [NSMutableDictionary dictionary];
+    [GlobalEvent setValue:tHybridUniversalEventAgentModule.GlobalEventRefreshInstance forKey:@"GlobalEventRefreshInstance"];
+
+    [self.weexInstance renderWithURL:self.weexUrl options:@{@"GlobalEvent":GlobalEvent} data:nil];
+    self.options = options;
 }
-
+- (void)refreshWeexInstance{
+    [self.weexInstance fireGlobalEvent:tHybridUniversalEventAgentModule.GlobalEventRefreshInstance params:self.options];
+}
 - (void)renderFinish:(UIView *)view{
-
+    if (self.options) {
+        [self refreshWeexInstance];
+    }
 }
 
 - (void)onFailed:(NSError *)error{
@@ -61,7 +73,15 @@
 }
 
 - (void)onCreate:(UIView *)view{
- 
+    if (!self.contentView) {
+        UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
+        CGRect frame = self.view.frame;
+        frame.origin = CGPointZero;
+        contentView.frame = frame;
+        [self.view addSubview:contentView];
+        self.contentView = contentView;
+        [self.contentView addSubview:view];
+    }
 }
 
 
@@ -69,9 +89,11 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_basket"] style:(UIBarButtonItemStylePlain) target:self action:@selector(springToBasket)];
     self.navigationItem.rightBarButtonItem = item;
 }
+
 - (void)springToBasket{
 
 }
+
 #define THYBRID_ADD_PROPERTY(Property,property,TYPE,ASSOCIATION_RETAIN)    \
 static void *k##property = &k##property;    \
 - (TYPE *)property{ \
@@ -92,10 +114,13 @@ THYBRID_ADD_PROPERTY(WeexUrl, weexUrl, NSURL, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 THYBRID_ADD_PROPERTY(Options, options, NSObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 //@synthesize contentView;
 THYBRID_ADD_PROPERTY(ContentView, contentView, UIView, OBJC_ASSOCIATION_ASSIGN);
-//@synthesize renderFailed;
+//@synthesize renderOption;
 static void *renderOption = &renderOption;
 - (thybridRenderOption)renderOption{
     NSNumber *obj = objc_getAssociatedObject(self, &renderOption);
+    if (!obj.integerValue) {
+        return thybridRenderOptionUnknown;
+    }
     return (thybridRenderOption)[obj integerValue];
 }
 - (void)setRenderOption:(thybridRenderOption)Property{
@@ -103,4 +128,24 @@ static void *renderOption = &renderOption;
 }
 
 
+- (void)springWithURL:(NSString *)url option:(NSDictionary *)option{
+    if (!url.length) {
+        return ;
+    }
+    [self performBlock:^{
+        UIViewController *VC = [[UIViewController alloc] init];
+        VC.weexUrl = [NSURL weexUrlWithFilePath:url];
+        if ([self isKindOfClass:UINavigationController.class]) {
+            [(UINavigationController *)self pushViewController:VC animated:YES];
+        } else {
+            [self.navigationController pushViewController:VC animated:YES];
+        }
+        [VC renderWeexWithOptions:option];
+    }];
+}
+- (void)performBlock:(void(^)(void))blocks{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        blocks();
+    }];
+}
 @end

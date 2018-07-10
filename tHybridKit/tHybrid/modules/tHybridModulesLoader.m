@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 
 #import "tHybridUniversalEventAgentModule.h"
+#import "tHybridImageFun.h"
 
 
 NSString *const tHybridUniversalEventAgentModuleName = @"EventAgent";
@@ -25,6 +26,9 @@ NSMutableDictionary *tHybridModelMap = nil;
      */
     registerBlock(tHybridUniversalEventAgentModule.class, tHybridUniversalEventAgentModuleName);
     [tHybridModelMap setValue:tHybridUniversalEventAgentModule.class forKey:tHybridUniversalEventAgentModuleName];
+
+    registerBlock(tHybridImageFun.class, @"tHybridImage");
+    [tHybridModelMap setValue:tHybridImageFun.class forKey:@"tHybridImage"];
 
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"weexConfiguration" ofType:@"plist"];
     if (!filePath) {

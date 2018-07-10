@@ -9,9 +9,10 @@
 
 typedef NS_OPTIONS(NSUInteger, thybridRenderOption) {
     thybridRenderOptionUnknown = 1 << 0,
-    thybridRenderOptionRendering = 1 << 1,
-    thybridRenderOptionFail = 1 << 2,
-    thybridRenderOptionFinish = 1 << 3,
+    thybridRenderOptionOnRendering = 1 << 1,
+    thybridRenderOptionOnFail = 1 << 2,
+    thybridRenderOptionOnCreate = 1 << 3,
+    thybridRenderOptionOnFinish = 1 << 4,
 };
 
 /**

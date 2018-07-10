@@ -9,6 +9,18 @@
 
 #import "WXModuleProtocol.h"
 
+typedef NS_ENUM(NSUInteger, tHybridUniversalEventErrorCode) {
+    /** 请求正常 */
+    tHybridUniversalEventErrorCodeSuccess = 0,
+    /** 未知错误 */
+    tHybridUniversalEventErrorCodeUnknown = 1000,
+    /** 请求错误：请求的操作无法识别 */
+    tHybridUniversalEventErrorCodeRequestError = 1001,
+    /** 数据异常：请求的数据 */
+    tHybridUniversalEventErrorCodeDataAnomaly = 1002,
+
+};
+
 FOUNDATION_EXTERN NSString *const tHybridUniversalEventAgentModuleName;
 /**
  *  tHybrid事件对象模型
