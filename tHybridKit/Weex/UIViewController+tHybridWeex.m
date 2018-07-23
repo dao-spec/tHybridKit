@@ -84,37 +84,29 @@
 }
 
 - (void)onCreate:(UIView *)view{
-    if (self.privateContentView || !self.contentView){
-        if (!self.privateContentView) {
-            UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
-//            CGRect frame = self.view.frame;
-//            frame.origin = CGPointZero;
-//            contentView.frame = frame;
-            [self.view addSubview:contentView];
-            contentView.clipsToBounds = YES;
-            [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(0);
-                make.bottom.mas_equalTo(0);
-                make.left.mas_equalTo(0);
-                make.centerX.mas_equalTo(0);
-            }];
-
-            self.privateContentView = contentView;
-            self.contentView = contentView;
-        }
+    if (self.contentView) {
         [self.contentView removeAllSubview];
         [self.contentView addSubview:view];
+    } else {
+        [self.view addSubview:view];
     }
+
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(0);
+    }];
+    [view.superview layoutSubviews];
+    self.weexInstance.frame = view.frame;
 }
 
 
-- (void)rightBarButtonItem{
-    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_basket"] style:(UIBarButtonItemStylePlain) target:self action:@selector(springToBasket)];
+- (void)addUpdataBarButtonItem{
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Update" style:(UIBarButtonItemStylePlain) target:self action:@selector(rightBarButtonAction)];
+
     self.navigationItem.rightBarButtonItem = item;
 }
 
-- (void)springToBasket{
-
+- (void)rightBarButtonAction{
+    [self renderWeex];
 }
 
 #define THYBRID_ADD_PROPERTY(Property,property,TYPE,ASSOCIATION_RETAIN)    \
@@ -137,7 +129,6 @@ THYBRID_ADD_PROPERTY(WeexUrl, weexUrl, NSURL, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 THYBRID_ADD_PROPERTY(Options, options, NSObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 //@synthesize contentView;
 THYBRID_ADD_PROPERTY(ContentView, contentView, UIView, OBJC_ASSOCIATION_ASSIGN);
-THYBRID_ADD_PROPERTY(PrivateContentView, privateContentView, UIView, OBJC_ASSOCIATION_ASSIGN);
 //@synthesize renderOption;
 static void *renderOption = &renderOption;
 - (thybridRenderOption)renderOption{
@@ -206,6 +197,7 @@ static void *navigationAnimate = &navigationAnimate;
             [self.navigationController pushViewController:VC animated:YES];
         }
         [VC renderWeexWithOptions:option];
+        [VC addUpdataBarButtonItem];
     }];
 }
 - (void)performBlock:(void(^)(void))blocks{

@@ -33,7 +33,6 @@
 - (void)renderWeexWithOptions:(NSObject *)options;
 - (void)refreshWeexInstance;
 
-- (void)rightBarButtonItem;
 
 
 - (void)springWithURL:(NSString *)url option:(NSDictionary *)option;

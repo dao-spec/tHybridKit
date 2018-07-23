@@ -12,15 +12,14 @@
 static NSString* kRequest = @"tcmRequest";
 static NSString* kRequestData = @"tcmRequestData";
 
-NSString  *host = @"www.taocaimall.weex-demo-enterprise://";
+NSString  *scheme = @"taocaimall";
 
 
 @implementation NSURL (tHybrid)
 
 - (NSString *)tcmRequest{
     if (!objc_getAssociatedObject(self, &kRequest)) {
-        NSString *absoluteString = [self.absoluteString stringByReplacingOccurrencesOfString:host withString:@""];
-        absoluteString = [absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *absoluteString = [self.query stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
         NSArray *array = [absoluteString componentsSeparatedByString:@"?"];
         if (array.firstObject) {
@@ -53,7 +52,7 @@ NSString  *host = @"www.taocaimall.weex-demo-enterprise://";
 
 
 - (BOOL)tcmAPP{
-    if ([self.absoluteString isEqualToString:host]) {
+    if ([self.scheme isEqualToString:scheme]) {
         return YES;
     }
     return NO;
