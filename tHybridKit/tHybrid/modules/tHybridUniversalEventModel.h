@@ -33,7 +33,8 @@ FOUNDATION_EXTERN NSString *const tHybridUniversalEventAgentModuleName;
 
 @property (nonatomic, copy, readonly) WXModuleCallback callbackBlock;
 
-+ (instancetype)eventWithName:(NSString *)eventName eventType:(NSString *)eventType data:(NSDictionary *)data;
+/** Android不支持直接返回 */
+//+ (instancetype)eventWithName:(NSString *)eventName eventType:(NSString *)eventType data:(NSDictionary *)data;
 + (instancetype)eventWithName:(NSString *)eventName eventType:(NSString *)eventType data:(NSDictionary *)data callback:(id)callback;
 
 @end

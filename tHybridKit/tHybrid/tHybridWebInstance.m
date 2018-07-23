@@ -15,6 +15,12 @@
         _modules = [NSMutableDictionary dictionary];
     }
     return _modules;
+    
+}
+
+- (JSContext *)jsContext{
+    JSContext *context  =[self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+    return context;
 }
 
 @end

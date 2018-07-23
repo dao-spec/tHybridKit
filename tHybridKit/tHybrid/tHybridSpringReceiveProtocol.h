@@ -21,7 +21,7 @@
  *      ⚠️该线程不可直接执行UI相关的操作
  */
 @optional
-- (NSDictionary *)responsetHybridUniversalEventModel:(tHybridUniversalEventModel *)event;
+- (void)responsetHybridUniversalEventModel:(tHybridUniversalEventModel *)event;
 
 
 @end

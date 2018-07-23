@@ -10,7 +10,6 @@
 #import "tHybridSpringReceiveProtocol.h"
 #import "tHybridWebProtocol.h"
 
-#import "NSObject+tHybridURL.h"
 #import "tHybridUniversalEventModel.h"
 
 @interface UIViewController (WebDelegate)<UIWebViewDelegate, tHybridWebProtocol, tHybridSpringReceiveProtocol>
@@ -36,5 +35,5 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView NS_REQUIRES_SUPER;
 
 
-
+- (void)loadRequestURL:(NSString *)url web:(UIWebView *)web;
 @end

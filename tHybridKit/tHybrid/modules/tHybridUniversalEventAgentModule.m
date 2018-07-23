@@ -7,17 +7,15 @@
 
 #import "tHybridUniversalEventAgentModule.h"
 
-#import "tHybridUniversalEventModel.h"
 #import "tHybridSpringReceiveProtocol.h"
 #import "UIViewController+tHybridWeex.h"
+#import <objc/runtime.h>
 
 typedef UIViewController<tHybridSpringReceiveProtocol> tHybridReceiveHandler;
 
 
 
-
 @implementation tHybridUniversalEventAgentModule
-
 @synthesize webInstance;
 @synthesize weexInstance;
 
@@ -47,41 +45,17 @@ THYBRID_EXPORT_METHOD(@selector(asynEvent:eventType:eventData:callback:));
 
     if ([handler respondsToSelector:@selector(responsetHybridUniversalEventModel:)]) {
         [handler responsetHybridUniversalEventModel:event];
-        return;
+    } else {
+        NSLog(@"%@ cann't responds the event:%@", NSStringFromClass(handler.class), event);
     }
-
-    NSLog(@"%@ cann't responds the event:%@", NSStringFromClass(handler.class), event);
 }
 
-/**
- *  H5+Weex
- */
-WX_EXPORT_METHOD_SYNC(@selector(syncEvent:::));
-- (NSDictionary *)syncEvent:(NSString *)eventName :(NSString *)eventType :(NSDictionary *)eventData{
 
-    tHybridReceiveHandler *handler = nil;
-
-    if (self.webInstance) {
-        handler = (tHybridReceiveHandler *)self.webInstance.viewController;
-    } else if (self.weexInstance) {
-        handler = (tHybridReceiveHandler *)self.weexInstance.viewController;
-    }
-
-    //
-    tHybridUniversalEventModel *event = [tHybridUniversalEventModel eventWithName:eventName eventType:eventType data:eventData];
-
-    if ([handler respondsToSelector:@selector(responsetHybridUniversalEventModel:)]) {
-        return [handler responsetHybridUniversalEventModel:event];
-    }
-    NSLog(@"%@ cann't responds the event:%@", NSStringFromClass(handler.class), event);
-
-    return nil;
-}
 
 WX_EXPORT_METHOD_SYNC(@selector(springWithWeexUrl:option:));
-- (NSString *)springWithWeexUrl:(NSString *)weexUrl option:(NSDictionary *)option{
+- (void)springWithWeexUrl:(NSString *)weexUrl option:(NSDictionary *)option{
     if (!weexUrl) {
-        return @"weexUrl不能为空";
+        return ;
     }
 
     tHybridReceiveHandler *handler = nil;
@@ -92,7 +66,6 @@ WX_EXPORT_METHOD_SYNC(@selector(springWithWeexUrl:option:));
     }
 
     [handler springWithURL:weexUrl option:option];
-    return nil;
 }
 
 WX_EXPORT_METHOD_SYNC(@selector(setPageTitle:));
@@ -106,18 +79,99 @@ WX_EXPORT_METHOD_SYNC(@selector(setPageTitle:));
     handler.title = pageTitle;
 }
 
+WX_EXPORT_METHOD(@selector(leftBarButtonAction));
+- (void)leftBarButtonAction{
+    tHybridReceiveHandler *handler = nil;
+    if (self.webInstance) {
+        handler = (tHybridReceiveHandler *)self.webInstance.viewController;
+    } else if (self.weexInstance) {
+        handler = (tHybridReceiveHandler *)self.weexInstance.viewController;
+    }
+    SEL selector = NSSelectorFromString(@"leftBarButtonAction");
+    Method method = class_getInstanceMethod(handler.class, selector);
+    IMP imp = method_getImplementation(method);
+    void (*func)(id, SEL) = (void *)imp;
+
+    func(handler, selector);
+}
+
+
++ (NSString *)GlobalEventRefreshInstance{
+    return @"tHybridUniversalEventAgentModule_GlobalEventRefreshInstance";
+}
+
++ (NSString *)EventNamePage{
+    NSString *className = NSStringFromClass(self);
+    NSString *methodName = NSStringFromSelector(@selector(EventNamePage));
+    return [NSString stringWithFormat:@"%@_%@", className, methodName];
+}
+
+
+
 WX_EXPORT_METHOD(@selector(EventMap:));
 - (void)EventMap:(WXModuleCallback)callback{
-    [super EventMap:callback];
+    callback([self.class EventMap]);
 }
-- (NSDictionary *)eventMap{
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[super eventMap]?:@{}];
-    [dic setValue:[tHybridUniversalEventAgentModule GlobalEventRefreshInstance] forKey:@"GlobalEventRefreshInstance"];
+
++ (NSMutableDictionary *)EventMap{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:[self GlobalEventRefreshInstance] forKey:@"GlobalEventRefreshInstance"];
+    [dic setValue:[self EventNamePage] forKey:@"EventNamePage"];
+
+    uint outCount;
+    Method *claMethodList = class_copyMethodList(object_getClass(self.class), &outCount);
+
+    for (int index=0; index < outCount; index++) {
+        Method claMethod = claMethodList[index];
+
+        NSString *claMethodName = NSStringFromSelector(method_getName(claMethod));
+        if ([claMethodName hasPrefix:@"THYBRID_EVENT_BINDING_TOKEN"]) {
+            SEL claSelector = method_getName(claMethod);
+            NSString* (*func)(id, SEL) = (NSString* (*)(id, SEL))method_getImplementation(claMethod);
+            NSString *eventValue = func(self, claSelector);
+            NSString *eventKey = [claMethodName stringByReplacingOccurrencesOfString:@"THYBRID_EVENT_BINDING_TOKEN" withString:@""];
+            if (eventKey && eventValue) {
+                [dic setValue:eventValue forKey:eventKey];
+            }
+        }
+    }
+
+    free(claMethodList);
+
 
     return dic;
 }
 
-+ (NSString *)GlobalEventRefreshInstance{
-    return @"SuperiorModuleGlobalEventRefreshInstance";
++ (BOOL)checkEventName:(NSString *)eventName{
+    if ([self.EventNamePage isEqualToString:eventName]) {
+        return YES;
+    }
+
+    return NO;
 }
+/**
+ *  H5+Weex
+ */
+/*
+WX_EXPORT_METHOD_SYNC(@selector(syncEvent:::));
+- (void)syncEvent:(NSString *)eventName :(NSString *)eventType :(NSDictionary *)eventData{
+
+    tHybridReceiveHandler *handler = nil;
+
+    if (self.webInstance) {
+        handler = (tHybridReceiveHandler *)self.webInstance.viewController;
+    } else if (self.weexInstance) {
+        handler = (tHybridReceiveHandler *)self.weexInstance.viewController;
+    }
+
+    //
+    tHybridUniversalEventModel *event = [tHybridUniversalEventModel eventWithName:eventName eventType:eventType data:eventData];
+
+    if ([handler respondsToSelector:@selector(responsetHybridUniversalEventModel:)]) {
+        [handler responsetHybridUniversalEventModel:event];
+    } else {
+        NSLog(@"%@ cann't responds the event:%@", NSStringFromClass(handler.class), event);
+    }
+}
+*/
 @end

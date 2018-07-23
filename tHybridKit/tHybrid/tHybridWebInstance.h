@@ -26,7 +26,7 @@
 /**
  * JavaScript运行环境
  */
-@property (nonatomic, weak) JSContext *jsContext;
+@property (nonatomic, readonly) JSContext *jsContext;
 
 
 /**

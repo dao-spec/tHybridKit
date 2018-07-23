@@ -7,7 +7,6 @@
 //
 
 #import "NSURL+tHybrid.h"
-#import "NSObject+tHybridURL.h"
 #import <objc/runtime.h>
 
 static NSString* kRequest = @"tcmRequest";
@@ -36,22 +35,18 @@ NSString  *host = @"www.taocaimall.weex-demo-enterprise://";
     if (!objc_getAssociatedObject(self, &kRequestData)) {
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
 
-        NSString *absoluteString = [self.absoluteString stringByReplacingOccurrencesOfString:host withString:@""];
-        absoluteString = [absoluteString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *absoluteString = [self.query stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
-        NSArray *array = [absoluteString componentsSeparatedByString:@"?"];
-        if (array.count == 2) {
-            NSArray *keyValues = [array.lastObject componentsSeparatedByString:@"&"];
-            for (NSString *kvp in keyValues) {
-                NSArray *kvs = [kvp componentsSeparatedByString:@"=" ];
-                if (kvs.count == 2) {
-                    [dic setValue:kvs.lastObject forKey:kvs.firstObject];
-                } else {
-                    [dic setValue:@"" forKey:kvs.firstObject];
-                }
+        NSArray *keyValues = [absoluteString componentsSeparatedByString:@"&"];
+        for (NSString *kvp in keyValues) {
+            NSArray *kvs = [kvp componentsSeparatedByString:@"=" ];
+            if (kvs.count == 2) {
+                [dic setValue:kvs.lastObject forKey:kvs.firstObject];
+            } else {
+                [dic setValue:@"" forKey:kvs.firstObject];
             }
-            objc_setAssociatedObject(self, &kRequestData, dic, OBJC_ASSOCIATION_COPY_NONATOMIC);
         }
+        objc_setAssociatedObject(self, &kRequestData, dic, OBJC_ASSOCIATION_COPY_NONATOMIC);
     }
     return objc_getAssociatedObject(self, &kRequestData);
 }
@@ -64,11 +59,6 @@ NSString  *host = @"www.taocaimall.weex-demo-enterprise://";
     return NO;
 }
 
-+ (NSURL *)weexUrlWithFilePath:(NSString *)filePath{
-    NSString *fullpath = [NSString stringWithFormat:@"%@/%@", [filePath tHybridRemoteBaseURL], filePath];
-    fullpath = [fullpath stringByReplacingOccurrencesOfString:@"//" withString:@"/"];
-    return [NSURL URLWithString:fullpath];
-}
 
 @end
 

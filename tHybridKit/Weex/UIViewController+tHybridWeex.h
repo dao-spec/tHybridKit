@@ -10,18 +10,20 @@
 
 #import "tHybridSpringReceiveProtocol.h"
 #import "tHybridWeexProtocol.h"
-#import "NSObject+tHybridURL.h"
-
+#import "UIView+GDViewFromXIB.h"
 
 
 
 @interface UIViewController (tHybridWeex) <tHybridWeexProtocol, tHybridSpringReceiveProtocol>
 
+@property(nonatomic, assign) BOOL navigationStatus;
+@property(nonatomic, assign) BOOL navigationAnimate;
+
 /**
  * 渲染Weex
  */
 - (void)renderWeex;
-
+- (void)renderWeexWithURL:(NSURL *)url;
 
 /**
  * 渲染Weex并携带参数

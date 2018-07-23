@@ -20,9 +20,9 @@
 
 @implementation tHybridUniversalEventModel
 
-+ (instancetype)eventWithName:(NSString *)eventName eventType:(NSString *)eventType data:(NSDictionary *)data{
-    return [[tHybridUniversalEventModel alloc] initWithName:eventName eventType:eventType data:data callback:nil];
-}
+//+ (instancetype)eventWithName:(NSString *)eventName eventType:(NSString *)eventType data:(NSDictionary *)data{
+//    return [[tHybridUniversalEventModel alloc] initWithName:eventName eventType:eventType data:data callback:nil];
+//}
 + (instancetype)eventWithName:(NSString *)eventName eventType:(NSString *)eventType data:(NSDictionary *)data callback:(id)callback{
     return [[tHybridUniversalEventModel alloc] initWithName:eventName eventType:eventType data:data callback:callback];
 }

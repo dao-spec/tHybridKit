@@ -19,7 +19,6 @@
 
 #import "UIViewController+WebDelegate.h"
 
-#import "NSObject+EventMap.h"
-#import "tHybridUniversalEventAgentModule.h"
+#import "tHybridKitModule.h"
 
 #endif /* tHybridKit_h */

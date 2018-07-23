@@ -10,11 +10,22 @@
 
 #import "NSURL+tHybrid.h"
 #import <objc/runtime.h>
-#import "tHybridUniversalEventAgentModule.h"
+#import "Masonry.h"
 
+#import "tHybridKitModule.h"
+
+@interface UIViewController (private)
+
+@property (nonatomic, weak) UIView *privateContentView;
+
+@end
 
 @implementation UIViewController (tHybridWeex)
 
+- (void)renderWeexWithURL:(NSURL *)url{
+    self.weexUrl = url;
+    [self renderWeex];
+}
 - (void)renderWeex{
     [self renderWeexWithOptions:self.options];
 }
@@ -54,13 +65,13 @@
         [weakSelf renderFinish:view];
     };
     NSMutableDictionary *GlobalEvent = [NSMutableDictionary dictionary];
-    [GlobalEvent setValue:tHybridUniversalEventAgentModule.GlobalEventRefreshInstance forKey:@"GlobalEventRefreshInstance"];
+    [GlobalEvent setValue:tHybridKitModule.GlobalEventRefreshInstance forKey:@"GlobalEventRefreshInstance"];
 
     [self.weexInstance renderWithURL:self.weexUrl options:@{@"GlobalEvent":GlobalEvent} data:nil];
     self.options = options;
 }
 - (void)refreshWeexInstance{
-    [self.weexInstance fireGlobalEvent:tHybridUniversalEventAgentModule.GlobalEventRefreshInstance params:self.options];
+    [self.weexInstance fireGlobalEvent:tHybridKitModule.GlobalEventRefreshInstance params:self.options];
 }
 - (void)renderFinish:(UIView *)view{
     if (self.options) {
@@ -73,13 +84,25 @@
 }
 
 - (void)onCreate:(UIView *)view{
-    if (!self.contentView) {
-        UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
-        CGRect frame = self.view.frame;
-        frame.origin = CGPointZero;
-        contentView.frame = frame;
-        [self.view addSubview:contentView];
-        self.contentView = contentView;
+    if (self.privateContentView || !self.contentView){
+        if (!self.privateContentView) {
+            UIView *contentView = [[UIView alloc] initWithFrame:CGRectZero];
+//            CGRect frame = self.view.frame;
+//            frame.origin = CGPointZero;
+//            contentView.frame = frame;
+            [self.view addSubview:contentView];
+            contentView.clipsToBounds = YES;
+            [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(0);
+                make.bottom.mas_equalTo(0);
+                make.left.mas_equalTo(0);
+                make.centerX.mas_equalTo(0);
+            }];
+
+            self.privateContentView = contentView;
+            self.contentView = contentView;
+        }
+        [self.contentView removeAllSubview];
         [self.contentView addSubview:view];
     }
 }
@@ -114,6 +137,7 @@ THYBRID_ADD_PROPERTY(WeexUrl, weexUrl, NSURL, OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 THYBRID_ADD_PROPERTY(Options, options, NSObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 //@synthesize contentView;
 THYBRID_ADD_PROPERTY(ContentView, contentView, UIView, OBJC_ASSOCIATION_ASSIGN);
+THYBRID_ADD_PROPERTY(PrivateContentView, privateContentView, UIView, OBJC_ASSOCIATION_ASSIGN);
 //@synthesize renderOption;
 static void *renderOption = &renderOption;
 - (thybridRenderOption)renderOption{
@@ -127,7 +151,39 @@ static void *renderOption = &renderOption;
     objc_setAssociatedObject(self, &renderOption, @(Property), OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
+static void *navigationStatus = &navigationStatus;
+- (BOOL)navigationStatus{
+    NSNumber *obj = objc_getAssociatedObject(self, &navigationStatus);
+    if (!obj) {
+        return NO;
+    }
+    return [obj boolValue];
+}
+- (void)setNavigationStatus:(BOOL)Property{
+    objc_setAssociatedObject(self, &navigationStatus, @(Property), OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
 
+
+static void *navigationAnimate = &navigationAnimate;
+- (BOOL)navigationAnimate{
+//    return YES;
+    NSNumber *obj = objc_getAssociatedObject(self, &navigationAnimate);
+    if (!obj) {
+        return YES;
+    }
+    return [obj boolValue];
+}
+- (void)setNavigationAnimate:(BOOL)Property{
+    objc_setAssociatedObject(self, &navigationAnimate, @(Property), OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+
+/**
+ <#Description#>
+
+ @param url <#url description#>
+ @param option <#option description#>
+ */
 - (void)springWithURL:(NSString *)url option:(NSDictionary *)option{
     if (!url.length) {
         return ;
@@ -135,6 +191,15 @@ static void *renderOption = &renderOption;
     [self performBlock:^{
         UIViewController *VC = [[UIViewController alloc] init];
         VC.weexUrl = [NSURL weexUrlWithFilePath:url];
+        VC.title = [option valueForKey:@"title"] ? : @"";
+        NSDictionary *navigation = [option valueForKey:@"navigation"];
+        if (navigation[@"status"]) {
+            VC.navigationStatus = [navigation[@"status"] boolValue];
+        }
+        if (navigation[@"animated"]) {
+            VC.navigationAnimate = [navigation[@"animated"] boolValue];
+        }
+
         if ([self isKindOfClass:UINavigationController.class]) {
             [(UINavigationController *)self pushViewController:VC animated:YES];
         } else {

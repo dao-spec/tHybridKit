@@ -118,6 +118,8 @@
 		3A771AB0D743474DF0AD6995B56AA3D1 /* WXLoadingComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = E61731963A59C1C5F9C13AF334E71AB6 /* WXLoadingComponent.m */; };
 		3A9B824D928E02C92FCB193D4C577BCE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E43798F54E61A1A22D860CDEE9B670 /* JavaScriptCore.framework */; };
 		3AC661D24ACF8D24FD9724AFD5E17D22 /* WXBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 87BF0294961B7D5978B99A3FD48E3D1D /* WXBaseViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3B23A7FC20F4CCB200AF8052 /* NSObject+EventMap.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B23A7FA20F4CCB100AF8052 /* NSObject+EventMap.h */; };
+		3B23A7FD20F4CCB200AF8052 /* NSObject+EventMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B23A7FB20F4CCB100AF8052 /* NSObject+EventMap.m */; };
 		3B2FB8BC9298617B2EAB002745EE1496 /* UIViewController+Browser.m in Sources */ = {isa = PBXBuildFile; fileRef = EC900E481334D1692668C8A77B38459E /* UIViewController+Browser.m */; };
 		3B42715C7E431B207F595A775FBB2212 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E39ADBF82E17021C9CED6AC51CB78C7 /* CoreText.framework */; };
 		3BE5853559025ABB971E2E77F2A07025 /* WXRecycleListUpdateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 965BD0618057029CEF6B3E9095F3C49E /* WXRecycleListUpdateManager.m */; };
@@ -669,7 +671,7 @@
 		1683886C8F9688F6783E9820199C67E0 /* WXTextComponentProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXTextComponentProtocol.h; path = ios/sdk/WeexSDK/Sources/Protocol/WXTextComponentProtocol.h; sourceTree = "<group>"; };
 		170844EF326EA79653E77C38B38DDC74 /* EXPMatchers+contain.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+contain.m"; path = "Expecta/Matchers/EXPMatchers+contain.m"; sourceTree = "<group>"; };
 		17EC366C2FA43A3E435F97900B5FB72B /* tHybridKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "tHybridKit-dummy.m"; sourceTree = "<group>"; };
-		1850A3180DEEEDF44D70E51A7B5D5020 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1850A3180DEEEDF44D70E51A7B5D5020 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		187AC46B89C1445A7A38F022C3F2D402 /* SDWebImageImageIOCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageImageIOCoder.m; path = SDWebImage/SDWebImageImageIOCoder.m; sourceTree = "<group>"; };
 		18AC37D8F39CC006A9E3BF7C34AFC1D4 /* WXRecycleListComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXRecycleListComponent.h; path = ios/sdk/WeexSDK/Sources/Component/RecycleList/WXRecycleListComponent.h; sourceTree = "<group>"; };
 		192F1A933E38FB97735C225D0B02ABB6 /* tHybridKit.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = tHybridKit.h; path = tHybridKit/tHybridKit.h; sourceTree = "<group>"; };
@@ -703,7 +705,7 @@
 		23885C88935124E114E168832AD60D62 /* EXPFloatTuple.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPFloatTuple.h; path = Expecta/EXPFloatTuple.h; sourceTree = "<group>"; };
 		239087CBCBB24BFBE2659CF83766716B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		242584C7C166B6EF3E30AA056BC5F3D4 /* EXPDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = EXPDefines.h; path = Expecta/EXPDefines.h; sourceTree = "<group>"; };
-		244792C2F832FC5B8132072E59527F7C /* tHybridKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = tHybridKit.framework; path = tHybridKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		244792C2F832FC5B8132072E59527F7C /* tHybridKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = tHybridKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24910155FDAC1CCFE1EB05E03E17732B /* WXImageComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXImageComponent.h; path = ios/sdk/WeexSDK/Sources/Component/WXImageComponent.h; sourceTree = "<group>"; };
 		264ABDD5F3AFD60E21DF31BD85B3DD55 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2711ED16683016D7012B2CD082BC0877 /* WXRootViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXRootViewController.h; path = ios/sdk/WeexSDK/Sources/Controller/WXRootViewController.h; sourceTree = "<group>"; };
@@ -744,18 +746,20 @@
 		356D9ADE59E1642F021C2AB9CED543E3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		35BD900F8F99CB4C145E7C25EFE8CC72 /* WXThreadSafeMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXThreadSafeMutableDictionary.h; path = ios/sdk/WeexSDK/Sources/Utility/WXThreadSafeMutableDictionary.h; sourceTree = "<group>"; };
 		35DD3C170E04996FCCE2A46F5D60D834 /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
-		36D53955FA1323C5AD5D50C8FC0C93E3 /* WeexSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WeexSDK.framework; path = WeexSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36D53955FA1323C5AD5D50C8FC0C93E3 /* WeexSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeexSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		37884A99DAEF1B334D8D37BFF81A8EEF /* WXDomModule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXDomModule.m; path = ios/sdk/WeexSDK/Sources/Module/WXDomModule.m; sourceTree = "<group>"; };
 		38FA3C0F50E6EF71C8B85264E7D1CBC6 /* WXWebViewModule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXWebViewModule.m; path = ios/sdk/WeexSDK/Sources/Module/WXWebViewModule.m; sourceTree = "<group>"; };
 		39082AED990B2A2B4912EC07D4EF211B /* WXConvert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXConvert.h; path = ios/sdk/WeexSDK/Sources/Utility/WXConvert.h; sourceTree = "<group>"; };
 		395D32A1F71CD0E9C14E8D7EFA786CB6 /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
-		3993DBC8C0E0ECC03E0B3250B74C2C81 /* Pods_tHybridKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_tHybridKit_Tests.framework; path = "Pods-tHybridKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3993DBC8C0E0ECC03E0B3250B74C2C81 /* Pods_tHybridKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tHybridKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		39DCC8732B175113B0EED0A4213070BC /* WXComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXComponent.m; path = ios/sdk/WeexSDK/Sources/Model/WXComponent.m; sourceTree = "<group>"; };
 		3A6BF9A8390362ECDE6CAE48405450ED /* Specta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Specta.xcconfig; sourceTree = "<group>"; };
 		3AF08004B1EC470AD43C01B9AD165846 /* SPTExample.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SPTExample.m; path = Specta/Specta/SPTExample.m; sourceTree = "<group>"; };
 		3B03A3CED8F210BF621D1D441D36965E /* WXScrollerComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXScrollerComponent.h; path = ios/sdk/WeexSDK/Sources/Component/WXScrollerComponent.h; sourceTree = "<group>"; };
+		3B23A7FA20F4CCB100AF8052 /* NSObject+EventMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+EventMap.h"; sourceTree = "<group>"; };
+		3B23A7FB20F4CCB100AF8052 /* NSObject+EventMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EventMap.m"; sourceTree = "<group>"; };
 		3B3F1A30BF014CB3421F95835D09F363 /* WXURLRewriteDefaultImpl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXURLRewriteDefaultImpl.m; path = ios/sdk/WeexSDK/Sources/Handler/WXURLRewriteDefaultImpl.m; sourceTree = "<group>"; };
-		3B71F7A1EF826BB43F38A3C548DDB009 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SDWebImage.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B71F7A1EF826BB43F38A3C548DDB009 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B7573E9BCAAC918D88CDE57E8C359B6 /* WXVoiceOverModule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXVoiceOverModule.m; path = ios/sdk/WeexSDK/Sources/Module/WXVoiceOverModule.m; sourceTree = "<group>"; };
 		3BEC445F7E22216960EA2E20D4E84731 /* EXPMatchers+beLessThan.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+beLessThan.h"; path = "Expecta/Matchers/EXPMatchers+beLessThan.h"; sourceTree = "<group>"; };
 		3BEF847E4EA40F93DFA3586EECE0B395 /* WXSectionDataController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXSectionDataController.m; path = ios/sdk/WeexSDK/Sources/Component/Recycler/WXSectionDataController.m; sourceTree = "<group>"; };
@@ -861,7 +865,7 @@
 		65E38E10F503A472B20E1026073F7947 /* SDWebImage-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SDWebImage-umbrella.h"; sourceTree = "<group>"; };
 		662B971DD28B693438A7256110E80BE3 /* SPTCompiledExample.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SPTCompiledExample.h; path = Specta/Specta/SPTCompiledExample.h; sourceTree = "<group>"; };
 		670B79E8E521889B297B3BC381CBBADB /* WXSliderNeighborComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXSliderNeighborComponent.m; path = ios/sdk/WeexSDK/Sources/Component/WXSliderNeighborComponent.m; sourceTree = "<group>"; };
-		672870BBA85E379A2ED3F2D15B2045B7 /* native-bundle-main.js */ = {isa = PBXFileReference; includeInIndex = 1; name = "native-bundle-main.js"; path = "pre-build/native-bundle-main.js"; sourceTree = "<group>"; };
+		672870BBA85E379A2ED3F2D15B2045B7 /* native-bundle-main.js */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.javascript; name = "native-bundle-main.js"; path = "pre-build/native-bundle-main.js"; sourceTree = "<group>"; };
 		67C227DB9F3D0320122BB620C0A50008 /* WXInstanceWrap.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXInstanceWrap.m; path = ios/sdk/WeexSDK/Sources/Module/WXInstanceWrap.m; sourceTree = "<group>"; };
 		6800D4523D317EB84EB06EF778E215A8 /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+HighlightedWebCache.m"; path = "SDWebImage/UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
 		689EA124BFF4BA40288BE44D18CB9B50 /* SDImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCache.h; path = SDWebImage/SDImageCache.h; sourceTree = "<group>"; };
@@ -904,8 +908,8 @@
 		7BD1B9DB951C4CE3C56A397800C2AE35 /* WXInnerLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXInnerLayer.m; path = ios/sdk/WeexSDK/Sources/Display/WXInnerLayer.m; sourceTree = "<group>"; };
 		7C82535B6A7FAAB04DD71B8FEF70C2A8 /* WXJSASTParser.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXJSASTParser.h; path = ios/sdk/WeexSDK/Sources/Component/RecycleList/WXJSASTParser.h; sourceTree = "<group>"; };
 		7C8F65CF435F8ED5B198BF41289333DE /* WeexSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WeexSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7C975AE733ED93C1A4A401F2B73ABE68 /* WXJSASTParser.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = WXJSASTParser.mm; path = ios/sdk/WeexSDK/Sources/Component/RecycleList/WXJSASTParser.mm; sourceTree = "<group>"; };
-		7C986CEC620E39651BE56AC5524F7E44 /* Expecta_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Expecta_Snapshots.framework; path = "Expecta+Snapshots.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C975AE733ED93C1A4A401F2B73ABE68 /* WXJSASTParser.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = WXJSASTParser.mm; path = ios/sdk/WeexSDK/Sources/Component/RecycleList/WXJSASTParser.mm; sourceTree = "<group>"; };
+		7C986CEC620E39651BE56AC5524F7E44 /* Expecta_Snapshots.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Expecta_Snapshots.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CBC58C5E1A475B9394EE7D545914044 /* UIButton+WebCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+WebCache.m"; path = "SDWebImage/UIButton+WebCache.m"; sourceTree = "<group>"; };
 		7CC01B01955831ABBB80AD24FC8BEE3D /* Specta-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Specta-umbrella.h"; sourceTree = "<group>"; };
 		7CCB49154E165B105C9228AB60BB79C1 /* WXAssert.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXAssert.m; path = ios/sdk/WeexSDK/Sources/Utility/WXAssert.m; sourceTree = "<group>"; };
@@ -931,8 +935,8 @@
 		8646B602447D1C6FA97AD9E361DDB4EA /* SDWebImageFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageFrame.h; path = SDWebImage/SDWebImageFrame.h; sourceTree = "<group>"; };
 		86886ACA818FF4CE63FCF19DD8CFF330 /* TCMWeexImageLoader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = TCMWeexImageLoader.m; sourceTree = "<group>"; };
 		86AB590115DE2032DD829156F681162A /* WXWeakObjectWrapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXWeakObjectWrapper.m; path = ios/sdk/WeexSDK/Sources/Utility/WXWeakObjectWrapper.m; sourceTree = "<group>"; };
-		87118D30CD0C4892AD2D163CFC58B257 /* Layout.c */ = {isa = PBXFileReference; includeInIndex = 1; name = Layout.c; path = ios/sdk/WeexSDK/Sources/Layout/Layout.c; sourceTree = "<group>"; };
-		8714F9DCFF598A990FFA8E2636B5F941 /* Specta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Specta.framework; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		87118D30CD0C4892AD2D163CFC58B257 /* Layout.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = Layout.c; path = ios/sdk/WeexSDK/Sources/Layout/Layout.c; sourceTree = "<group>"; };
+		8714F9DCFF598A990FFA8E2636B5F941 /* Specta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Specta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87BF0294961B7D5978B99A3FD48E3D1D /* WXBaseViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXBaseViewController.h; path = ios/sdk/WeexSDK/Sources/Controller/WXBaseViewController.h; sourceTree = "<group>"; };
 		885A86B308580A9F0A7A2353030B5CAE /* NSValue+Expecta.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValue+Expecta.h"; path = "Expecta/NSValue+Expecta.h"; sourceTree = "<group>"; };
 		888D8707559E48DC46C1ECAA3AC67E33 /* WXInnerLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXInnerLayer.h; path = ios/sdk/WeexSDK/Sources/Display/WXInnerLayer.h; sourceTree = "<group>"; };
@@ -952,12 +956,12 @@
 		8F93DD227A6832D06C21046CA838E59B /* NSObject+ModuleMap.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSObject+ModuleMap.h"; sourceTree = "<group>"; };
 		8FC99BA9C6832313E8218D964CE18284 /* EXPMatchers+endWith.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+endWith.m"; path = "Expecta/Matchers/EXPMatchers+endWith.m"; sourceTree = "<group>"; };
 		902363DAA38BF892F036108CBFD7AA38 /* WXLoadingIndicator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXLoadingIndicator.m; path = ios/sdk/WeexSDK/Sources/Component/WXLoadingIndicator.m; sourceTree = "<group>"; };
-		90412AD320F90B38F7B92E9503BC8DDF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		90412AD320F90B38F7B92E9503BC8DDF /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9057096F2394982694D4D6102A037B27 /* WXComponent+ViewManagement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WXComponent+ViewManagement.h"; path = "ios/sdk/WeexSDK/Sources/View/WXComponent+ViewManagement.h"; sourceTree = "<group>"; };
 		906EE8D6B6D9B80734E40673A57BA2A4 /* WXComponent+Navigation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WXComponent+Navigation.m"; path = "ios/sdk/WeexSDK/Sources/Model/WXComponent+Navigation.m"; sourceTree = "<group>"; };
 		92A84CC011020D2DA6E3A0C206C85622 /* WXExtendCallNativeProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXExtendCallNativeProtocol.h; path = ios/sdk/WeexSDK/Sources/Protocol/WXExtendCallNativeProtocol.h; sourceTree = "<group>"; };
 		92AA35D9AA3EC99A4B2D354F3E6ECF2D /* SDWebImagePrefetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImagePrefetcher.h; path = SDWebImage/SDWebImagePrefetcher.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93CDD2BA140154FA10B50FC642FEB4E9 /* WXComponent+Navigation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WXComponent+Navigation.h"; path = "ios/sdk/WeexSDK/Sources/Model/WXComponent+Navigation.h"; sourceTree = "<group>"; };
 		958A27C37494A79D8FB20FDD3062F4C1 /* WXConfigCenterProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXConfigCenterProtocol.h; path = ios/sdk/WeexSDK/Sources/Protocol/WXConfigCenterProtocol.h; sourceTree = "<group>"; };
 		962011F604D4DCE8B6A9AD023AA2D682 /* WXImageComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXImageComponent.m; path = ios/sdk/WeexSDK/Sources/Component/WXImageComponent.m; sourceTree = "<group>"; };
@@ -1011,7 +1015,7 @@
 		A97644E408BBBF87BA324846641E9F2D /* EXPMatchers+beIdenticalTo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beIdenticalTo.m"; path = "Expecta/Matchers/EXPMatchers+beIdenticalTo.m"; sourceTree = "<group>"; };
 		A9D31189AE5996713B4CFA07D3272551 /* WXWebComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXWebComponent.h; path = ios/sdk/WeexSDK/Sources/Component/WXWebComponent.h; sourceTree = "<group>"; };
 		AA06931557640B0FEFFB051D4C6F712A /* WXResourceRequestHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXResourceRequestHandler.h; path = ios/sdk/WeexSDK/Sources/Network/WXResourceRequestHandler.h; sourceTree = "<group>"; };
-		AAA673DB69F133B99CB6FF96FB46CC08 /* WXRoundedRect.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = WXRoundedRect.mm; path = ios/sdk/WeexSDK/Sources/Display/WXRoundedRect.mm; sourceTree = "<group>"; };
+		AAA673DB69F133B99CB6FF96FB46CC08 /* WXRoundedRect.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = WXRoundedRect.mm; path = ios/sdk/WeexSDK/Sources/Display/WXRoundedRect.mm; sourceTree = "<group>"; };
 		AAAB7D4DC900744AAE575F884BA500DB /* WXHeaderComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXHeaderComponent.h; path = ios/sdk/WeexSDK/Sources/Component/WXHeaderComponent.h; sourceTree = "<group>"; };
 		AB33C81CAE13E6D2028794546BBABD19 /* FBSnapshotTestCasePlatform.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCasePlatform.m; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.m; sourceTree = "<group>"; };
 		AC755C18BAD24724F27C181183AFF04F /* WXCallJSMethod.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXCallJSMethod.m; path = ios/sdk/WeexSDK/Sources/Bridge/WXCallJSMethod.m; sourceTree = "<group>"; };
@@ -1024,7 +1028,7 @@
 		AEA1ED8A9EF5109C14A338DF2C842899 /* WXWebViewModule.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXWebViewModule.h; path = ios/sdk/WeexSDK/Sources/Module/WXWebViewModule.h; sourceTree = "<group>"; };
 		AEA924E18FD065176247DAE8678A78DC /* EXPMatchers+raiseWithReason.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+raiseWithReason.m"; path = "Expecta/Matchers/EXPMatchers+raiseWithReason.m"; sourceTree = "<group>"; };
 		AF7C461BA382C0D142493748396B589A /* WXDestroyProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXDestroyProtocol.h; path = ios/sdk/WeexSDK/Sources/Protocol/WXDestroyProtocol.h; sourceTree = "<group>"; };
-		AF8BBDC4ACBC998606AA6FD6E770665E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		AF8BBDC4ACBC998606AA6FD6E770665E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B079E66E66438743513D63D9E2485E17 /* WeexSDK.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WeexSDK.xcconfig; sourceTree = "<group>"; };
 		B080342685F52C1ABA2B108961DB2FAC /* WXModalUIModule.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXModalUIModule.m; path = ios/sdk/WeexSDK/Sources/Module/WXModalUIModule.m; sourceTree = "<group>"; };
 		B17D09701B945247F4831A23DF0FC8F6 /* Specta-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Specta-dummy.m"; sourceTree = "<group>"; };
@@ -1041,7 +1045,7 @@
 		B5A568DD7910DFFC557B4A16D87B0C86 /* WXDatePickerManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXDatePickerManager.m; path = ios/sdk/WeexSDK/Sources/Manager/WXDatePickerManager.m; sourceTree = "<group>"; };
 		B6A1000823D4AEC564E3D749226EA197 /* WXMultiColumnLayout.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXMultiColumnLayout.m; path = ios/sdk/WeexSDK/Sources/Component/Recycler/WXMultiColumnLayout.m; sourceTree = "<group>"; };
 		B7278BA7778A7D18211A1E380949DD88 /* WXResourceRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXResourceRequest.h; path = ios/sdk/WeexSDK/Sources/Network/WXResourceRequest.h; sourceTree = "<group>"; };
-		B7EF7BB29E16B4E4B8FD9248469AF1C8 /* Expecta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Expecta.framework; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7EF7BB29E16B4E4B8FD9248469AF1C8 /* Expecta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Expecta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B25598EE8EFF3328E520647E3FBCC7 /* tHybridKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = tHybridKit.xcconfig; sourceTree = "<group>"; };
 		B96527B3D38B78E70D8D75D9593C8961 /* WXComponent+ViewManagement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WXComponent+ViewManagement.m"; path = "ios/sdk/WeexSDK/Sources/View/WXComponent+ViewManagement.m"; sourceTree = "<group>"; };
 		B96B5900FB0F57BABF51E38E046F3C64 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
@@ -1058,7 +1062,7 @@
 		BFEBEB9F86312DD1DD246B68157F4CC9 /* EXPMatchers+raiseWithReason.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "EXPMatchers+raiseWithReason.h"; path = "Expecta/Matchers/EXPMatchers+raiseWithReason.h"; sourceTree = "<group>"; };
 		BFF16E89F3A1921E543FDB9FFBD7FC78 /* ExpectaObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ExpectaObject.h; path = Expecta/ExpectaObject.h; sourceTree = "<group>"; };
 		C04272CBCD161C32BA86E6DBD646F031 /* SPTCompiledExample.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SPTCompiledExample.m; path = Specta/Specta/SPTCompiledExample.m; sourceTree = "<group>"; };
-		C12402425A085E1BB4ECE32752CAA550 /* WXComponent+DataBinding.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = "WXComponent+DataBinding.mm"; path = "ios/sdk/WeexSDK/Sources/Component/RecycleList/WXComponent+DataBinding.mm"; sourceTree = "<group>"; };
+		C12402425A085E1BB4ECE32752CAA550 /* WXComponent+DataBinding.mm */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.cpp.objcpp; name = "WXComponent+DataBinding.mm"; path = "ios/sdk/WeexSDK/Sources/Component/RecycleList/WXComponent+DataBinding.mm"; sourceTree = "<group>"; };
 		C19364904F9B05C2936E18DE3045E459 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C287CA791889F0107FBF4130051E357E /* WXResourceLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXResourceLoader.h; path = ios/sdk/WeexSDK/Sources/Loader/WXResourceLoader.h; sourceTree = "<group>"; };
 		C4595DE9F42CD4EA803068B979CB6421 /* Layout.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Layout.h; path = ios/sdk/WeexSDK/Sources/Layout/Layout.h; sourceTree = "<group>"; };
@@ -1106,7 +1110,7 @@
 		D9137CEB4F909034FC9646A255B60A75 /* WXScrollerComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXScrollerComponent.m; path = ios/sdk/WeexSDK/Sources/Component/WXScrollerComponent.m; sourceTree = "<group>"; };
 		D91E8C50D9DD27346266C8D3FC2DB142 /* WXRecycleListUpdateManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXRecycleListUpdateManager.h; path = ios/sdk/WeexSDK/Sources/Component/RecycleList/WXRecycleListUpdateManager.h; sourceTree = "<group>"; };
 		DA36E857A1EB06BD88E4CA1F2699228C /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/AVKit.framework; sourceTree = DEVELOPER_DIR; };
-		DA4FA8ECF41B1F2E34A75721D8D57331 /* Pods_tHybridKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_tHybridKit_Example.framework; path = "Pods-tHybridKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA4FA8ECF41B1F2E34A75721D8D57331 /* Pods_tHybridKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tHybridKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE3D4F026FEA9A474CE79C1BFBAC590 /* WXRecyclerDragController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXRecyclerDragController.m; path = ios/sdk/WeexSDK/Sources/Component/Recycler/WXRecyclerDragController.m; sourceTree = "<group>"; };
 		DCDEB94311ECBF5291B51767E323CEE9 /* WXJSExceptionInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXJSExceptionInfo.h; path = ios/sdk/WeexSDK/Sources/Model/WXJSExceptionInfo.h; sourceTree = "<group>"; };
 		DCF3E9936424320D11A37EFE8F14F327 /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.h"; sourceTree = "<group>"; };
@@ -1140,7 +1144,7 @@
 		EC9FDE71B656861150688807A55C98E4 /* WXAssert.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXAssert.h; path = ios/sdk/WeexSDK/Sources/Utility/WXAssert.h; sourceTree = "<group>"; };
 		ED07ACD68A035427FBDB9DE0E009B4D5 /* EXPMatchers+beNil.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "EXPMatchers+beNil.m"; path = "Expecta/Matchers/EXPMatchers+beNil.m"; sourceTree = "<group>"; };
 		EDF7F2A058BC6339A0758FF21F29765E /* WXRoundedRect.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WXRoundedRect.h; path = ios/sdk/WeexSDK/Sources/Display/WXRoundedRect.h; sourceTree = "<group>"; };
-		EE1DFB99801E8AF08CFD119F775D1A45 /* tHybridKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = tHybridKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EE1DFB99801E8AF08CFD119F775D1A45 /* tHybridKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = tHybridKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EE24DEFD100D62A907E3062FE50AE059 /* SDWebImage-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SDWebImage-dummy.m"; sourceTree = "<group>"; };
 		EF278C9C3932812C55FC6F22DFB5D880 /* WXDivComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXDivComponent.m; path = ios/sdk/WeexSDK/Sources/Component/WXDivComponent.m; sourceTree = "<group>"; };
 		EF95296E1CCC112446BFFEE220043BC6 /* WXTextInputComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WXTextInputComponent.m; path = ios/sdk/WeexSDK/Sources/Component/WXTextInputComponent.m; sourceTree = "<group>"; };
@@ -1332,7 +1336,6 @@
 				B4C0113654D9FC4BBB515C16381656E2 /* XCTestCase+Specta.m */,
 				2CEA6B4154A98C84C3570C8936EB34F5 /* Support Files */,
 			);
-			name = Specta;
 			path = Specta;
 			sourceTree = "<group>";
 		};
@@ -1752,7 +1755,6 @@
 				E318045BB3438D9DB55C2551748C90D7 /* Resources */,
 				8815FB79EE6DCB69CB8DBA7B7C4B2D15 /* Support Files */,
 			);
-			name = WeexSDK;
 			path = WeexSDK;
 			sourceTree = "<group>";
 		};
@@ -1837,13 +1839,14 @@
 				8E8872FF3460E7BB6C5A3C7364C8B59D /* Support Files */,
 				A2500A5E19BAE0A66112EFB7CADAE1E0 /* SwiftSupport */,
 			);
-			name = FBSnapshotTestCase;
 			path = FBSnapshotTestCase;
 			sourceTree = "<group>";
 		};
 		B75E49744925A5FE0AD82990A60C2322 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				3B23A7FA20F4CCB100AF8052 /* NSObject+EventMap.h */,
+				3B23A7FB20F4CCB100AF8052 /* NSObject+EventMap.m */,
 				0F0FF88772791E5C4FDCD6D3375D85ED /* tHybridModulesLoader.h */,
 				BFDF71A04DEC94158486C71AFD1106D2 /* tHybridModulesLoader.m */,
 				F90CA4AAFB46F9E18BDC2787F8EBE05D /* tHybridUniversalEventAgentModule.h */,
@@ -1851,7 +1854,6 @@
 				299FA2E4AE5FEB5944C6477F8A144847 /* tHybridUniversalEventModel.h */,
 				481815C657BD357646EC29DBE044A81D /* tHybridUniversalEventModel.m */,
 			);
-			name = modules;
 			path = modules;
 			sourceTree = "<group>";
 		};
@@ -1933,7 +1935,6 @@
 				213E4DEA965AF766FD9DF2E967FDAFA7 /* NSValue+Expecta.m */,
 				4753DB05BEFA57A49F3CF367691A2629 /* Support Files */,
 			);
-			name = Expecta;
 			path = Expecta;
 			sourceTree = "<group>";
 		};
@@ -1973,7 +1974,6 @@
 				E9B6E9F28994D523FA041DDE3CCA2312 /* Core */,
 				042CDDEF50D0095F2CC92DE0DCDDDEF5 /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -2086,7 +2086,6 @@
 				B3935E4BA2B9F428232325C12ACF3349 /* EXPMatchers+FBSnapshotTest.m */,
 				9FC52F4F63A000285EEB5E4F059F0F87 /* Support Files */,
 			);
-			name = "Expecta+Snapshots";
 			path = "Expecta+Snapshots";
 			sourceTree = "<group>";
 		};
@@ -2192,6 +2191,7 @@
 				41CC214541946B82A25CE427BB81ABEA /* EXPMatchers+beKindOf.h in Headers */,
 				E233F5CF4BF16CFB539804C4E995C355 /* EXPMatchers+beLessThan.h in Headers */,
 				AA5060419F1307F5F03ECBEA70DB186C /* EXPMatchers+beLessThanOrEqualTo.h in Headers */,
+				3B23A7FC20F4CCB200AF8052 /* NSObject+EventMap.h in Headers */,
 				64C46AF200F2347115A0DF2799D6E403 /* EXPMatchers+beNil.h in Headers */,
 				CB99A2D7D003745153A564346DF8ABA8 /* EXPMatchers+beSubclassOf.h in Headers */,
 				FC6474103AA989EBD5368772037BE0BB /* EXPMatchers+beSupersetOf.h in Headers */,
@@ -2889,6 +2889,7 @@
 				5E4F55D319FF771D658CCE335E7CB498 /* EXPFloatTuple.m in Sources */,
 				150503B99F77D3D8897EFFC68C09A351 /* EXPMatcherHelpers.m in Sources */,
 				9A0ADF06F5B6BC3A70EDE1285BAF9346 /* EXPMatchers+beCloseTo.m in Sources */,
+				3B23A7FD20F4CCB200AF8052 /* NSObject+EventMap.m in Sources */,
 				8220368E5F7EA70947BAD2B6F216C61B /* EXPMatchers+beFalsy.m in Sources */,
 				A037AD9C808583B3EC9F49B3EEDA588A /* EXPMatchers+beginWith.m in Sources */,
 				FF394D6FEA84206182301180AE4CB957 /* EXPMatchers+beGreaterThan.m in Sources */,
