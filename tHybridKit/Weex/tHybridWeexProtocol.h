@@ -39,6 +39,7 @@ typedef NS_OPTIONS(NSUInteger, thybridRenderOption) {
 - (void)renderFinish:(UIView *)view;
 
 @optional
+//用于weex端事件发送给native，可设置回调
 - (void)weexAction:(NSDictionary*)option completionHandler:(void (^)(id result))completionHandler;
 
 @end
