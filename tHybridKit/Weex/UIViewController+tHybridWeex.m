@@ -181,6 +181,7 @@ static void *navigationAnimate = &navigationAnimate;
     }
     [self performBlock:^{
         UIViewController *VC = [[UIViewController alloc] init];
+        VC.view.backgroundColor = [UIColor whiteColor];
         VC.weexUrl = [NSURL weexUrlWithFilePath:url];
         VC.title = [option valueForKey:@"title"] ? : @"";
         NSDictionary *navigation = [option valueForKey:@"navigation"];

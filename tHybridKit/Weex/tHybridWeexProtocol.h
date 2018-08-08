@@ -38,4 +38,7 @@ typedef NS_OPTIONS(NSUInteger, thybridRenderOption) {
 @optional
 - (void)renderFinish:(UIView *)view;
 
+@optional
+- (void)weexAction:(NSDictionary*)option completionHandler:(void (^)(id result))completionHandler;
+
 @end
